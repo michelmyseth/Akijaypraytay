@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import { connectToDatabase } from '../util/mongodb'
+import Head from "next/head";
+import { connectToDatabase } from "../util/mongodb";
 
 export default function Home({ isConnected }) {
   return (
@@ -18,14 +18,10 @@ export default function Home({ isConnected }) {
           <h2 className="subtitle">You are connected to MongoDB</h2>
         ) : (
           <h2 className="subtitle">
-            You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
+            You are NOT connected to MongoDB. Check the <code>README.md</code>{" "}
             for instructions.
           </h2>
         )}
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
 
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
@@ -64,7 +60,7 @@ export default function Home({ isConnected }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
@@ -219,15 +215,15 @@ export default function Home({ isConnected }) {
         }
       `}</style>
     </div>
-  )
+  );
 }
 
 export async function getServerSideProps(context) {
-  const { client } = await connectToDatabase()
+  const { client } = await connectToDatabase();
 
-  const isConnected = await client.isConnected()
+  const isConnected = await client.isConnected();
 
   return {
     props: { isConnected },
-  }
+  };
 }
