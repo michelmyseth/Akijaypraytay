@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import React from "react";
 import Head from "next/head";
 import Navbar from "./Navbar";
+import Footerx from "./Footerx";
 
 const Layout: React.FC = ({ children }) => {
   return (
@@ -22,29 +23,16 @@ const Layout: React.FC = ({ children }) => {
         <link rel="icon" href="" />
       </Head>
 
-      <header>
-        <Navbar />
-      </header>
+      <div className="container-fluid bg-primary">
+        <div className="row">
+          <Navbar />
 
-      <main>{children}</main>
-
-      {/* <div>
-        <button className="scrollToTop">
-          <a href="#top">Retour en haut</a>
-        </button>
-      </div> */}
-
-      {/* css du bouton Return To Top ( placement ) */}
-      {/* <style jsx>
-        {`
-          .scrollToTop {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            border-radius: 90px;
-          }
-        `}
-      </style> */}
+          <main>{children}</main>
+        </div>
+        <footer className="position-end ">
+          <Footerx />
+        </footer>
+      </div>
     </div>
   );
 };

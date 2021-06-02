@@ -2,7 +2,7 @@ const Footerx: React.FC = () => {
   return (
     <>
       {/* <!-- Footer --> */}
-      <footer className="bg-dark text-center text-white position-bottom">
+      <footer className="bg-dark text-center text-white">
         {/* <!-- Grid container --> */}
         <div className="container p-4">
           {/* <!-- Section: Text -->  */}
