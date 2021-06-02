@@ -5,7 +5,6 @@ export const fakeUser: Users[] = [
     _id: 1,
     profile: {
       username: "John",
-      password: "admin",
       mail: "john@mail.com",
       contacts: ["jane@mail.com"],
       objects: [
@@ -35,6 +34,7 @@ export const fakeUser: Users[] = [
           picture: "url",
         },
       ],
+      token: "12345",
     },
     exchange: [
       {
