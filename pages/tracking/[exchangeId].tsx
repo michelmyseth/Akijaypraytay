@@ -1,6 +1,6 @@
 import React from "react";
 
-const Receiver: React.FC = () => {
+const Sender: React.FC = () => {
   return (
     <div>
       <h1>Page Receiver after mail send </h1>
@@ -8,4 +8,4 @@ const Receiver: React.FC = () => {
   );
 };
 
-export default Receiver;
+export default Sender;

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sender: React.FC = () => {
+const Receiver: React.FC = () => {
   return (
     <div>
       <h1>Page Sender exclu for login part </h1>
@@ -8,4 +8,4 @@ const Sender: React.FC = () => {
   );
 };
 
-export default Sender;
+export default Receiver;
