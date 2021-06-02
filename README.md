@@ -60,6 +60,11 @@ You will either see a message stating "You are connected to MongoDB" or "You are
 
 When you are successfully connected, you can refer to the [MongoDB Node.js Driver docs](https://mongodb.github.io/node-mongodb-native/3.4/tutorials/collections/) for further instructions on how to query your database.
 
+## Dependencies
+
+Authentication :
+`yarn add @fewlines/connect-client`
+
 ## Deploy on Vercel
 
 You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).

@@ -1,6 +1,5 @@
 export type Profile = {
   username: string;
-  password: string;
   mail: string;
   contacts: string[];
   objects: Object[];

@@ -7,6 +7,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fewlines/connect-client": "^0.5.0",
     "@types/mongodb": "^3.6.17",
     "mongodb": "^3.6.9",
     "next": "latest",
