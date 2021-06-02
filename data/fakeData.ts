@@ -34,6 +34,7 @@ export const fakeUser: Users[] = [
           picture: "url",
         },
       ],
+      token: "12345",
     },
     exchange: [
       {

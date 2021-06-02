@@ -3,6 +3,7 @@ export type Profile = {
   mail: string;
   contacts: string[];
   objects: Object[];
+  token: string;
 };
 
 export type Exchange = {

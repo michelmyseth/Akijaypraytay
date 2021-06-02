@@ -11,9 +11,6 @@ const oauthClientConstructorProps: OAuth2ClientConstructor = {
   audience: "wdb2g2",
   scopes: ["openid", "email"],
 };
-// console.log(`${process.env.CONNECT_CLIENT_ID}`);
-// console.log(`${process.env.CONNECT_CLIENT_SECRET}`);
-// console.log(`${process.env.CONNECT_REDIRECT_URI}`);
 
 const oauthClient = new OAuth2Client(oauthClientConstructorProps);
 
