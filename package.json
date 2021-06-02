@@ -9,9 +9,12 @@
   "dependencies": {
     "@fewlines/connect-client": "^0.5.0",
     "@types/mongodb": "^3.6.17",
+    "@types/react-bootstrap": "^0.32.25",
+    "bootstrap": "4.6.0",
     "mongodb": "^3.6.9",
     "next": "latest",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.6.0",
     "react-dom": "^16.13.1"
   },
   "license": "MIT",

@@ -89,3 +89,6 @@ you can write your mongodb "lien"
 
 Renamme folder .js by .tsx
 source .env.local
+
+yarn add react-bootstrap bootstrap@4.6.0
+yarn add @types/react-bootstrap
