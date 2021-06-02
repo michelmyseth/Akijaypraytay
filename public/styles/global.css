@@ -11,7 +11,13 @@ body {
 .container-fluid {
   height: 100vh;
 }
-
-/* footer {
-  position: inherit;
-} */
+.row {
+  width: 90rem;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 50px;
+  height: 50px;
+}

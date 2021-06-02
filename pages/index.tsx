@@ -6,7 +6,9 @@ export default function Home() {
       <br />
       <br />
       <br />
-      <h1>chips</h1>
+      <div className="container ml-2">
+        <h1>chips</h1>
+      </div>
     </div>
   );
 }

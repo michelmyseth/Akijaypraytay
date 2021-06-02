@@ -23,16 +23,14 @@ const Layout: React.FC = ({ children }) => {
         <link rel="icon" href="" />
       </Head>
 
-      <div className="container-fluid bg-primary">
-        <div className="row">
-          <Navbar />
+      <div className="row">
+        <Navbar />
 
-          <main>{children}</main>
-        </div>
-        <footer className="position-end ">
-          <Footerx />
-        </footer>
+        <main>{children}</main>
       </div>
+      <footer className="footer">
+        <Footerx />
+      </footer>
     </div>
   );
 };

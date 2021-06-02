@@ -4,7 +4,7 @@ import React from "react";
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark fixed-top ">
-      <img className="rounded-circle" src="" alt="" width={40} height={40} />
+      <img className="rounded-circle" src="" alt="" width={30} height={40} />
       <a className="navbar-brand" href="/">
         <h3>Akijaypraytay</h3>
       </a>
