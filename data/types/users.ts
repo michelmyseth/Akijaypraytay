@@ -2,17 +2,17 @@ export type Profile = {
   username: string;
   mail: string;
   contacts: string[];
-  objects: Object[];
+  ownedItems: Object[];
   token: string;
 };
 
 export type Exchange = {
   _id: any;
-  object: Object;
+  item: Object;
   lender: string;
   borrower: string;
-  creation_date: Date;
-  return_date: Date;
+  creation_date: string;
+  return_date: string;
   status: string;
 };
 

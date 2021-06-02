@@ -7,7 +7,7 @@ export const fakeUser: Users[] = [
       username: "John",
       mail: "john@mail.com",
       contacts: ["jane@mail.com"],
-      objects: [
+      ownedItems: [
         {
           name: "Fondation",
           description: "By I. Asimov",
@@ -34,72 +34,72 @@ export const fakeUser: Users[] = [
           picture: "url",
         },
       ],
-      token: "12345",
+      token: "",
     },
     exchange: [
       {
         _id: 1,
-        object: {
+        item: {
           name: "Fondation",
           description: "By I. Asimov",
           picture: "url",
         },
         lender: "john@mail.coml",
         borrower: "jane@mail.com",
-        creation_date: new Date("June 01, 2021"),
-        return_date: new Date("July 01, 2021"),
-        status: "Wainting",
+        creation_date: "Tue Jun 01 2021",
+        return_date: "Wed Jun 02 2021",
+        status: "Waiting",
       },
       {
         _id: 2,
-        object: {
+        item: {
           name: "Pen",
           description: "My favorite pen",
           picture: "url2",
         },
         lender: "jane@mail.coml",
         borrower: "john@mail.com",
-        creation_date: new Date("June 01, 2021"),
-        return_date: new Date("July 01, 2021"),
+        creation_date: "Tue Jun 01 2021",
+        return_date: "Wed Jun 02 2021",
         status: "Pending",
       },
       {
         _id: 3,
-        object: {
+        item: {
           name: "T-shirt",
           description: "A blue t-shirt",
           picture: "url",
         },
         lender: "john@mail.coml",
         borrower: "jane@mail.com",
-        creation_date: new Date("May 01, 2021"),
-        return_date: new Date("May 31, 2021"),
+        creation_date: "Tue Jun 01 2021",
+        return_date: "Wed Jun 02 2021",
         status: "Returned",
       },
       {
         _id: 4,
-        object: {
+        item: {
           name: "Mouse",
           description: "Wireless computer mouse",
           picture: "url",
         },
         lender: "john@mail.coml",
         borrower: "jane@mail.com",
-        creation_date: new Date("March 01, 2021"),
-        return_date: new Date("May 10, 2021"),
+        creation_date: "Tue Jun 01 2021",
+        return_date: "Wed Jun 02 2021",
         status: "Not Returned",
       },
       {
         _id: 5,
-        object: {
+        item: {
           name: "Car",
           description: "My suppa car",
           picture: "url",
         },
         lender: "john@mail.coml",
         borrower: "jane@mail.com",
-        creation_date: new Date("March 01, 2021"),
-        return_date: new Date("May 10, 2021"),
+        creation_date: "Tue Jun 01 2021",
+        return_date: "Wed Jun 02 2021",
         status: "Abort",
       },
     ],
