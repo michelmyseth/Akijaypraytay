@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import Footerx from "../components/Footerx";
 
 function MyApp({ Component, pageProps }) {
@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          position: relative;
         }
         main {
           padding: 5rem 0;
@@ -29,11 +30,9 @@ function MyApp({ Component, pageProps }) {
         }
         footer {
           width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          height: 2.5rem;
+          position: absolute;
+          bottom: 0;
         }
         footer img {
           margin-left: 0.5rem;
