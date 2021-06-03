@@ -1,11 +1,18 @@
 import { GetServerSideProps } from "next";
 import React from "react";
+
 import { connectToDatabase } from "../../util/mongodb";
 import { useState } from "react";
 
-const Profile: React.FC = (): JSX.Element => {
-  const [userName, setUserName] = useState<string>("");
 
+
+import { GetServerSideProps } from "next";
+import { Users } from "../../data/types/users";
+import { Props } from "../../data/types/props";
+import { checkingConnection } from "../../util/checkingConnection";
+
+const Profile: React.FC = (): JSX.Element => {
+  const [userName, setUserName] = useState<string>("")
   return (
     <div className="container">
       <div className="main-body">
@@ -70,7 +77,13 @@ const Profile: React.FC = (): JSX.Element => {
 
 export default Profile;
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const { db } = await connectToDatabase();
-//   const user = await db.collection("users").insertOne(username);
-// };
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const userToken = context.req.cookies.token;
+
+  const checkConnectionValidity = await checkingConnection(userToken);
+  console.log("DB", checkConnectionValidity);
+
+  return checkConnectionValidity;
+};
+
