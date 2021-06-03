@@ -62,4 +62,11 @@ Bootstrap :
 
 You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
+
+Renamme folder .js by .tsx
+source .env.local
+
+yarn add react-bootstrap bootstrap@4.6.0
+
 **Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
+

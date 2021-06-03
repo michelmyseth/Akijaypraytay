@@ -1,9 +1,14 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import Layout from "../components/Layout";
+import "../public/styles/global.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }
