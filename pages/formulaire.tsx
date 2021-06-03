@@ -9,11 +9,6 @@ const CreateUser: React.FC = () => {
   return (
     <>
       <div className="container">
-        <br />
-        <br />
-        <br />
-        <br />
-
         <form
           method="POST"
           action="/api/create_user"

@@ -8,16 +8,7 @@ body {
   background-color: rgb(108, 118, 124);
 }
 
-.container-fluid {
-  height: 100vh;
-}
-.row {
-  width: 90rem;
-}
 .footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
-  padding-top: 50px;
-  height: 50px;
 }

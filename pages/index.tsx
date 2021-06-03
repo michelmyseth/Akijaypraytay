@@ -2,12 +2,11 @@ import { connectToDatabase } from "../util/mongodb";
 
 export default function Home() {
   return (
-    <div>
-      <br />
-      <br />
-      <br />
+    <div className="">
       <div className="container ml-2">
-        <h1>chips</h1>
+        <br />
+        <br />
+        <br />
       </div>
     </div>
   );
