@@ -4,10 +4,7 @@ import { connectToDatabase } from "../../util/mongodb";
 import { useState } from "react";
 
 const Profile: React.FC = (): JSX.Element => {
-  const [userName, setUserName] = useState<string>("LES BOMBO");
-  console.log("//////USERNAME/////");
-
-  console.log(userName);
+  const [userName, setUserName] = useState<string>("");
 
   return (
     <div className="container">
@@ -24,10 +21,9 @@ const Profile: React.FC = (): JSX.Element => {
                     width="110"
                   />
                   <div className="mt-3">
-                    <h4>John Doe</h4>
-                    <p className="text-secondary mb-1">Username :LOG LOG</p>
+                    <p className="text-secondary mb-1">Username : {userName}</p>
 
-                    <p className="text-secondary mb-1">Email :LOG@ankama.fr</p>
+                    <p className="text-secondary mb-1">Email : props.mail</p>
 
                     <p className="text-muted font-size-sm"></p>
                   </div>
@@ -44,13 +40,13 @@ const Profile: React.FC = (): JSX.Element => {
                     <h6 className="mb-0">Full Name</h6>
                   </div>
 
-                  <form method="POST" action="/api/profile/edit">
+                  <form method="POST" action="/api/edit">
                     <div className="form-group">
                       <label>Username</label>
                       <input
                         type="username"
                         className="form-control"
-                        name="username"
+                        name="userName"
                         placeholder="Enter Username"
                         onChange={(event): void => {
                           setUserName(event.target.value);
