@@ -7,10 +7,10 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
   const tokens = await oauthClient.getTokensFromAuthorizationCode(
     `${request.query.code}`
   );
-  // console.log(tokens);
+  // console.log("####\n ACCESS_TOKEN", tokens.access_token);
 
   const userInfoResponse = await oauthClient.getUserInfo(tokens.access_token);
-  //console.log(userInfoResponse);
+  // console.log("####\n userMail", userInfoResponse.email);
 
   const { client } = await connectToDatabase();
   //const isConnected = await client.isConnected();
@@ -20,11 +20,10 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     .db()
     .collection("users")
     .findOne({ "profile.mail": `${userInfoResponse.email}` });
-  // .findOne({ "profile.mail": "toto@aol.com" });
-  // console.log(findingDB);
+  // console.log("####\n First DB check", findingDB);
 
   if (!findingDB) {
-    console.log("Not in DB : going to create");
+    console.log("Not in DB : going to create a new user");
   } else {
     console.log("Is in DB : good to go");
 
@@ -46,11 +45,13 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
       .findOne({ "profile.mail": `${userInfoResponse.email}` });
 
     if (findingDBPostUpdate.profile.token != "") {
-      console.log("\n #### token is already here", findingDB.profile.token);
+      console.log(
+        "\n #### token is already here",
+        findingDBPostUpdate.profile.token
+      );
       response.setHeader(
         "Set-Cookie",
-        // cookie.serialize("token", tokens.access_token, {
-        cookie.serialize("token", "DummyTokenValue", {
+        cookie.serialize("token", tokens.access_token, {
           httpOnly: true,
           secure: process.env.NODE_ENV !== "development",
           maxAge: 60 * 60,
@@ -59,9 +60,13 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
         })
       );
 
-      response.redirect("/dashboard/");
+      response.redirect("/transit/");
     } else {
-      console.log("\n #### token is empty", findingDB.profile.token);
+      console.log(
+        "\n #### token is empty, need to relog",
+        findingDB.profile.token
+      );
+      response.redirect("/api/login/");
     }
   }
 };
