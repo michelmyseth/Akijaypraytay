@@ -1,22 +1,24 @@
 export type Profile = {
   username: string;
-  password: string;
   mail: string;
-  contacts: [{ mail: string }];
+  contacts: string[];
+  ownedItems: Object[];
+  token: string;
 };
 
 export type Exchange = {
-  id: any;
+  _id: any;
+  item: Object;
   lender: string;
   borrower: string;
-  creation_date: number;
-  return_date: number;
+  creation_date: string;
+  return_date: string;
   status: string;
 };
 
 export type Object = {
   name: string;
-  descritpion: string;
+  description: string;
   picture: any;
 };
 
