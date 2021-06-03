@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React from "react";
-
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark fixed-top ">
@@ -42,7 +41,6 @@ const Navbar: React.FC = () => {
             </a>
           </li>
         </ul>
-
         {/* dropdown */}
         <div className="dropdown ">
           <button

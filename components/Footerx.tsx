@@ -2,15 +2,21 @@ const Footerx: React.FC = () => {
   return (
     <>
       {/* <!-- Footer --> */}
-      <footer className="bg-dark text-center text-white ">
+      <div className="bg-dark text-center text-white ">
         {/* <!-- Grid container --> */}
         <div className="container justify-content-center">
           <div className="row p-4">
             {/* <!-- Section: Text -->  */}
-
+            <section className="justify-content-center mb-4">
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Consequatur itaque est labore distinctio, atque quia omnis earum
+                veniam rem, eius dolores.
+              </p>
+            </section>
             {/* <!-- Section: Text -->
     <!-- Section: Links --> */}
-            <section className="row justify-content-center ">
+            <div className="row justify-content-center">
               {/* <!--Grid row--> */}
               {/* <!--Grid column--> */}
               <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
@@ -23,7 +29,7 @@ const Footerx: React.FC = () => {
                 </ul>
               </div>
               {/* <!--Grid column-->
-                <!--Grid column--> */}
+        <!--Grid column--> */}
               <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
                 <ul className="list-unstyled mb-0">
                   <li>
@@ -34,7 +40,7 @@ const Footerx: React.FC = () => {
                 </ul>
               </div>
               {/* <!--Grid column-->
-              <!--Grid column--> */}
+        <!--Grid column--> */}
               <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
                 <ul className="list-unstyled mb-0">
                   <li>
@@ -45,7 +51,7 @@ const Footerx: React.FC = () => {
                 </ul>
               </div>
               {/* <!--Grid column-->
-               <!--Grid column--> */}
+        <!--Grid column--> */}
               <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
                 <ul className="list-unstyled mb-0">
                   <li>
@@ -56,10 +62,10 @@ const Footerx: React.FC = () => {
                 </ul>
               </div>
               {/* <!--Grid column--> */}
-              {/* <!--Grid row--> */}
-            </section>
-            {/* <!-- Section: Links --> */}
+            </div>
+            {/* <!--Grid row--> */}
           </div>
+          {/* <!-- Section: Links --> */}
           {/* <!-- Grid container --> */}
           {/* <!-- Copyright --> */}
           <div className="text-center p-3 bg-dark">
@@ -67,10 +73,9 @@ const Footerx: React.FC = () => {
           </div>
         </div>
         {/* <!-- Copyright --> */}
-      </footer>
+      </div>
       {/* <!-- Footer --> */}
     </>
   );
 };
-
 export default Footerx;
