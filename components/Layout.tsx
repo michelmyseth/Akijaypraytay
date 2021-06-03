@@ -3,7 +3,6 @@ import React from "react";
 import Head from "next/head";
 import Navbar from "./Navbar";
 import Footerx from "./Footerx";
-
 const Layout: React.FC = ({ children }) => {
   return (
     <div className="min-vh-100 flex-column d-flex bodycss">
@@ -27,7 +26,6 @@ const Layout: React.FC = ({ children }) => {
         <br />
         <br />
         <br />
-
         <div className="h-100">{children}</div>
       </div>
       <footer className="mt-auto">
@@ -36,5 +34,4 @@ const Layout: React.FC = ({ children }) => {
     </div>
   );
 };
-
 export default Layout;
