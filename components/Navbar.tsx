@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React from "react";
+import Link from "next/link";
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark fixed-top ">
@@ -21,25 +22,25 @@ const Navbar: React.FC = () => {
       <div className="collapse navbar-collapse" id="navbarText">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item ">
-            <a className="nav-link" href="#">
-              History
-            </a>
+            <Link href="/history/">
+              <a className="nav-link">History</a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Create
-            </a>
+            <Link href="/create/">
+              <a className="nav-link">Create</a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Calendar
-            </a>
+            <Link href="/calendar/">
+              <a className="nav-link">Calendar</a>
+            </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a className="nav-link" href="#">
               Notification
             </a>
-          </li>
+          </li> */}
         </ul>
         {/* dropdown */}
         <div className="dropdown ">
@@ -67,24 +68,21 @@ const Navbar: React.FC = () => {
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li>
-              <a className="dropdown-item" href="#">
-                Sign In
-              </a>
+              <Link href="/profile/edit">
+                <a className="dropdown-item">Account</a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                Account
-              </a>
+              <Link href="/api/login">
+                <a className="dropdown-item">Login</a>
+              </Link>
             </li>
             <li>
-              <a className="dropdown-item" href="#">
-                Login
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#">
-                Logout
-              </a>
+              <Link href="/api/logout">
+                <a className="dropdown-item" href="/api/logout">
+                  Logout
+                </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -23,50 +23,63 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
   // console.log("####\n First DB check", findingDB);
 
   if (!findingDB) {
-    console.log("Not in DB : going to create a new user");
-  } else {
-    console.log("Is in DB : good to go");
-
+    // console.log("Not in DB : going to create a new user");
+    // response.redirect("/history/");
     await mongodb
       .db()
       .collection("users")
-      .updateOne(
-        { "profile.mail": `${userInfoResponse.email}` },
-        {
-          $set: {
-            "profile.token": `${tokens.access_token}`,
-          },
-        }
-      );
+      .insertOne({
+        profile: {
+          username: `${userInfoResponse.email}`,
+          mail: `${userInfoResponse.email}`,
+          contacts: [""],
+          ownedItems: [],
+          token: "",
+        },
+        exchange: [],
+      });
+  }
+  // console.log("Is in DB : good to go");
 
-    const findingDBPostUpdate = await mongodb
-      .db()
-      .collection("users")
-      .findOne({ "profile.mail": `${userInfoResponse.email}` });
+  await mongodb
+    .db()
+    .collection("users")
+    .updateOne(
+      { "profile.mail": `${userInfoResponse.email}` },
+      {
+        $set: {
+          "profile.token": `${tokens.access_token}`,
+        },
+      }
+    );
 
-    if (findingDBPostUpdate.profile.token != "") {
-      console.log(
-        "\n #### token is already here",
-        findingDBPostUpdate.profile.token
-      );
-      response.setHeader(
-        "Set-Cookie",
-        cookie.serialize("token", tokens.access_token, {
-          httpOnly: true,
-          secure: process.env.NODE_ENV !== "development",
-          maxAge: 60 * 60,
-          sameSite: "strict",
-          path: "/",
-        })
-      );
+  const findingDBPostUpdate = await mongodb
+    .db()
+    .collection("users")
+    .findOne({ "profile.mail": `${userInfoResponse.email}` });
 
-      response.redirect("/transit/");
-    } else {
-      console.log(
-        "\n #### token is empty, need to relog",
-        findingDB.profile.token
-      );
-      response.redirect("/api/login/");
-    }
+  if (findingDBPostUpdate.profile.token != "") {
+    // console.log(
+    //   "\n #### token is already here",
+    //   findingDBPostUpdate.profile.token
+    // );
+    response.setHeader(
+      "Set-Cookie",
+      cookie.serialize("token", tokens.access_token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== "development",
+        maxAge: 60 * 60,
+        sameSite: "strict",
+        path: "/",
+      })
+    );
+
+    response.redirect("/transit/");
+  } else {
+    // console.log(
+    //   "\n #### token is empty, need to relog",
+    //   findingDB.profile.token
+    // );
+    response.redirect("/api/login/");
   }
 };
