@@ -26,6 +26,8 @@ const Layout: React.FC = ({ children }) => {
         <br />
         <br />
         <br />
+        <br />
+        <br />
         <div className="h-100">{children}</div>
       </div>
       <footer className="mt-auto">

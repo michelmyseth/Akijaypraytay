@@ -4,15 +4,17 @@ import { Users } from "../../data/types/users";
 import { Props } from "../../data/types/props";
 import { checkingConnection } from "../../util/checkingConnection";
 
-const ProfileEdit: React.FC = () => {
+const Edit: React.FC = () => {
   return (
     <div>
-      <h1>Profile Page 👨🏿‍💻</h1>
+      <h1>Edit chips 🗓</h1>
     </div>
   );
 };
 
-export default ProfileEdit;
+
+export default Edit;
+
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userToken = context.req.cookies.token;
@@ -22,3 +24,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return checkConnectionValidity;
 };
+
