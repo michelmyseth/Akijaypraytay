@@ -19,3 +19,11 @@ body {
   margin: 0;
   position: relative;
 }
+h6 {
+  color: black;
+}
+
+#img-sizing {
+  width: 100px;
+  height: 100px;
+}
