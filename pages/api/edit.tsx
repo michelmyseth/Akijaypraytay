@@ -18,7 +18,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     mongodb
       .db()
       .collection("users")
-      .update(
+      .updateOne(
         { "profile.token": `${userToken}` },
         {
           $set: {

@@ -30,7 +30,7 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                       <p className="text-muted font-size-sm">
                         {displayPhone === 0
                           ? null
-                          : `Phone:  ${userData.profile.adress}`}
+                          : `Phone:  ${userData.profile.phone}`}
                       </p>
                       <p className="text-muted font-size-sm">
                         {displayAdress === ""
