@@ -6,6 +6,8 @@ export const fakeUser: Users[] = [
     profile: {
       username: "John",
       mail: "john@mail.com",
+      phone: 1000000000,
+      adress: "Place saint hubert",
       contacts: ["jane@mail.com"],
       ownedItems: [
         {

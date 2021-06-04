@@ -10,16 +10,21 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     response.statusCode = 200;
     response.setHeader("Content-Type", "application/json");
     const userName = request.body.userName;
+    const phoneNumber = request.body.phone;
+    const adress = request.body.adress;
+    console.log(request.body);
 
     // console.log(userName);
     mongodb
       .db()
       .collection("users")
-      .updateOne(
+      .update(
         { "profile.token": `${userToken}` },
         {
           $set: {
             "profile.username": `${userName}`,
+            "profile.phone": `${phoneNumber}`,
+            "profile.adress": `${adress}`,
           },
         }
       );

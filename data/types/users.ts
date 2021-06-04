@@ -1,6 +1,8 @@
 export type Profile = {
   username: string;
   mail: string;
+  phone: number;
+  adress: string;
   contacts: string[];
   ownedItems: Object[];
   token: string;
