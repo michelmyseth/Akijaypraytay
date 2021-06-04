@@ -9,7 +9,7 @@ export type Profile = {
 export type Exchange = {
   _id: any;
   item: Object;
-  lender: string;
+  loaner: string;
   borrower: string;
   creation_date: string;
   return_date: string;
