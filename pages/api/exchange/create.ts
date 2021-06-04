@@ -21,7 +21,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
       },
       loaner: request.body.loaner,
       borrower: request.body.borrower,
-      creation_date: new Date().toDateString(),
+      creation_date: new Date().toISOString().split("T")[0],
       return_date: request.body.returnDate,
       status: "Waiting",
     });
@@ -41,9 +41,25 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
         {
           $set: {
             exchange: exchangeData,
-            "profile.ownedItems": ownedItemsData,
           },
         }
       );
+
+    if (request.body.loaner === userData.profile.mail) {
+      await mongodb
+        .db()
+        .collection("users")
+        .updateOne(
+          { "profile.token": `${request.cookies.token}` },
+          {
+            $set: {
+              "profile.ownedItems": ownedItemsData,
+            },
+          }
+        );
+    }
+    response.redirect(
+      `/tracking/sender/${userData.exchange[userData.exchange.length - 1]._id}`
+    );
   }
 };
