@@ -10,6 +10,7 @@ import { checkingConnection } from "../../util/checkingConnection";
 
 const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
   const [display] = React.useState(userData.profile.adress);
+
   return (
     <>
       <div className="container">
@@ -82,16 +83,9 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                     </div>
                     <div className="col-sm-9 text-secondary">
                       <select name="username">
-                        <option value="">--Please choose a contact--</option>
                         {userData.profile.contacts.map((user, index) => (
-                          <div key={index}>
-                            <option>{user}</option>
-                          </div>
+                          <option key={index}>{user}</option>
                         ))}
-                        <option>Davido</option>
-                        <option>LogLog</option>
-                        <option>Michou</option>
-                        <option>Flow</option>
                       </select>
                     </div>
                   </div>
