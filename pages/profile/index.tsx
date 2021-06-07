@@ -160,7 +160,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const userToken = context.req.cookies.token;
 
   const checkConnectionValidity = await checkingConnection(userToken);
-  console.log("DB", checkConnectionValidity);
+  // console.log("DB", checkConnectionValidity);
 
   return checkConnectionValidity;
 };

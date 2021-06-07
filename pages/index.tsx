@@ -9,7 +9,7 @@ export default function Home() {
     </div>
   );
 }
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const { client } = await connectToDatabase();
   const isConnected = await client.isConnected();
   return {

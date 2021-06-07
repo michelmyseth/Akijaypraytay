@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React from "react";
 import Link from "next/link";
+
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark fixed-top ">

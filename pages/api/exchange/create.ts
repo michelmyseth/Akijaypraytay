@@ -27,11 +27,38 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     });
 
     const ownedItemsData: Object[] = userData.profile.ownedItems;
-    ownedItemsData.push({
-      name: request.body.name,
-      description: request.body.description,
-      picture: request.body.picture,
-    });
+
+    const newContact: string[] = userData.profile.contacts;
+
+    const isInContact: string[] = [];
+
+    if (request.body.loaner === userData.profile.mail) {
+      newContact.filter((contact: string) => {
+        if (contact === request.body.borrower) {
+          return isInContact.push(request.body.borrower);
+        }
+      });
+
+      if (isInContact.length === 0) {
+        newContact.push(request.body.borrower);
+      }
+
+      ownedItemsData.push({
+        name: request.body.name,
+        description: request.body.description,
+        picture: request.body.picture,
+      });
+    } else if (request.body.borrower === userData.profile.mail) {
+      newContact.filter((contact: string) => {
+        if (contact === request.body.loaner) {
+          return isInContact.push(request.body.loaner);
+        }
+      });
+
+      if (isInContact.length === 0) {
+        newContact.push(request.body.loaner);
+      }
+    }
 
     await mongodb
       .db()
@@ -41,23 +68,12 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
         {
           $set: {
             exchange: exchangeData,
+            "profile.ownedItems": ownedItemsData,
+            "profile.contacts": newContact,
           },
         }
       );
 
-    if (request.body.loaner === userData.profile.mail) {
-      await mongodb
-        .db()
-        .collection("users")
-        .updateOne(
-          { "profile.token": `${request.cookies.token}` },
-          {
-            $set: {
-              "profile.ownedItems": ownedItemsData,
-            },
-          }
-        );
-    }
     response.redirect(
       `/tracking/sender/${userData.exchange[userData.exchange.length - 1]._id}`
     );
