@@ -16,7 +16,7 @@ export default function TableHeader(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell key="_id" align="right">
+        <TableCell key="_id" align="left">
           <TableSortLabel
             active={valueToOrderBy === "_id"}
             direction={valueToOrderBy === "_id" ? orderDirection : "asc"}
@@ -26,7 +26,7 @@ export default function TableHeader(props) {
           </TableSortLabel>
         </TableCell>
 
-        <TableCell key="name" align="right">
+        <TableCell key="name" align="left">
           <TableSortLabel
             active={valueToOrderBy === "name"}
             direction={valueToOrderBy === "name" ? orderDirection : "asc"}
@@ -35,25 +35,25 @@ export default function TableHeader(props) {
             Name items
           </TableSortLabel>
         </TableCell>
-        <TableCell key="loaner" align="right">
+        <TableCell key="loaner" align="left">
           <TableSortLabel
             active={valueToOrderBy === "loaner"}
             direction={valueToOrderBy === "loaner" ? orderDirection : "asc"}
             onClick={createSortHandler("loaner")}
           >
-            loaner
+            Loaner
           </TableSortLabel>
         </TableCell>
-        <TableCell key="borrower" align="right">
+        <TableCell key="borrower" align="left">
           <TableSortLabel
             active={valueToOrderBy === "borrower"}
             direction={valueToOrderBy === "borrower" ? orderDirection : "asc"}
             onClick={createSortHandler("borrower")}
           >
-            borrower
+            Borrower
           </TableSortLabel>
         </TableCell>
-        <TableCell key="return_date" align="right">
+        <TableCell key="return_date" align="left">
           <TableSortLabel
             active={valueToOrderBy === "return_date"}
             direction={
@@ -61,16 +61,16 @@ export default function TableHeader(props) {
             }
             onClick={createSortHandler("return_date")}
           >
-            return_date
+            Return date
           </TableSortLabel>
         </TableCell>
-        <TableCell key="status" align="right">
+        <TableCell key="status" align="left">
           <TableSortLabel
             active={valueToOrderBy === "status"}
             direction={valueToOrderBy === "status" ? orderDirection : "asc"}
             onClick={createSortHandler("status")}
           >
-            status
+            Status
           </TableSortLabel>
         </TableCell>
       </TableRow>

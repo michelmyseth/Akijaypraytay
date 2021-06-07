@@ -63,14 +63,14 @@ const History: React.FC<Props> = ({ userData }) => {
                 getComparator(orderDirection, valueToOrderBy)
               ).map((data, index) => (
                 <TableRow key={index}>
-                  <TableCell align="right" scope="row">
+                  <TableCell align="left" scope="row">
                     {data._id}
                   </TableCell>
-                  <TableCell align="right">{data.item.name}</TableCell>
-                  <TableCell align="right">{data.loaner}</TableCell>
-                  <TableCell align="right">{data.borrower}</TableCell>
-                  <TableCell align="right">{data.return_date}</TableCell>
-                  <TableCell align="right">{data.status}</TableCell>
+                  <TableCell align="left">{data.item.name}</TableCell>
+                  <TableCell align="left">{data.loaner}</TableCell>
+                  <TableCell align="left">{data.borrower}</TableCell>
+                  <TableCell align="left">{data.return_date}</TableCell>
+                  <TableCell align="left">{data.status}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
