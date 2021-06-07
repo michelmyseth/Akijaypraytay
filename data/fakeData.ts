@@ -41,6 +41,7 @@ export const fakeUser: Users[] = [
     exchange: [
       {
         _id: 1,
+        uuid: "",
         item: {
           name: "Fondation",
           description: "By I. Asimov",
@@ -54,6 +55,7 @@ export const fakeUser: Users[] = [
       },
       {
         _id: 2,
+        uuid: "",
         item: {
           name: "Pen",
           description: "My favorite pen",
@@ -67,6 +69,7 @@ export const fakeUser: Users[] = [
       },
       {
         _id: 3,
+        uuid: "",
         item: {
           name: "T-shirt",
           description: "A blue t-shirt",
@@ -80,6 +83,7 @@ export const fakeUser: Users[] = [
       },
       {
         _id: 4,
+        uuid: "",
         item: {
           name: "Mouse",
           description: "Wireless computer mouse",
@@ -93,6 +97,7 @@ export const fakeUser: Users[] = [
       },
       {
         _id: 5,
+        uuid: "",
         item: {
           name: "Car",
           description: "My suppa car",
