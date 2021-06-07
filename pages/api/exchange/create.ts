@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse, Redirect } from "next";
 import { getDatabase } from "../../../util/mongodb";
 import { Exchange, Object } from "../../../data/types/users";
+import { v4 as uuidv4 } from "uuid";
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.method === "POST") {
@@ -14,6 +15,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     const exchangeData: Exchange[] = userData.exchange;
     exchangeData.push({
       _id: parseInt(request.body._id),
+      uuid: uuidv4(),
       item: {
         name: request.body.name,
         description: request.body.description,
