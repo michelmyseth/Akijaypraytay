@@ -34,7 +34,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
           mail: `${userInfoResponse.email}`,
           phone: 0,
           adress: "",
-          contacts: [""],
+          contacts: [],
           ownedItems: [],
           token: "",
         },
