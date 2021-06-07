@@ -7,13 +7,7 @@ const Footerx: React.FC = () => {
         <div className="container justify-content-center">
           <div className="row p-4">
             {/* <!-- Section: Text -->  */}
-            <section className="justify-content-center mb-4">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur itaque est labore distinctio, atque quia omnis earum
-                veniam rem, eius dolores.
-              </p>
-            </section>
+            <section className="justify-content-center mb-4"></section>
             {/* <!-- Section: Text -->
     <!-- Section: Links --> */}
             <div className="row justify-content-center">
