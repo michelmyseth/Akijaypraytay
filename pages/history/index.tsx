@@ -3,15 +3,16 @@ import { GetServerSideProps } from "next";
 import { Users } from "../../data/types/users";
 import { Props } from "../../data/types/props";
 import { checkingConnection } from "../../util/checkingConnection";
-import { TableContainer } from "@material-ui/core";
+import { Container, TableContainer } from "@material-ui/core";
 import TableHeader from "./component/tableHeader";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
+import Paper from "@material-ui/core/Paper";
 
 const History: React.FC<Props> = ({ userData }) => {
-  const [orderDirection, setOrderDirection] = React.useState("asc");
+  const [orderDirection, setOrderDirection] = React.useState("");
   const [valueToOrderBy, setValueToOrderBy] = React.useState("");
 
   const handleRequestSort = (event, property) => {
@@ -48,28 +49,34 @@ const History: React.FC<Props> = ({ userData }) => {
 
   return (
     <>
-      <TableContainer>
-        <Table>
-          <TableHeader
-            valueToOrderBy={valueToOrderBy}
-            orderDirection={orderDirection}
-            handleRequestSort={handleRequestSort}
-          />
-          {sortedRowInformation(
-            userData.exchange,
-            getComparator(orderDirection, valueToOrderBy)
-          ).map((data, index) => (
-            <TableRow key={index}>
-              <TableCell>{data._id}</TableCell>
-              <TableCell>{data.item.name}</TableCell>
-              <TableCell>{data.loaner}</TableCell>
-              <TableCell>{data.borrower}</TableCell>
-              <TableCell>{data.return_date}</TableCell>
-              <TableCell>{data.status}</TableCell>
-            </TableRow>
-          ))}
-        </Table>
-      </TableContainer>
+      <Container maxWidth="lg">
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table">
+            <TableHeader
+              valueToOrderBy={valueToOrderBy}
+              orderDirection={orderDirection}
+              handleRequestSort={handleRequestSort}
+            />
+            <TableBody>
+              {sortedRowInformation(
+                userData.exchange,
+                getComparator(orderDirection, valueToOrderBy)
+              ).map((data, index) => (
+                <TableRow key={index}>
+                  <TableCell align="right" scope="row">
+                    {data._id}
+                  </TableCell>
+                  <TableCell align="right">{data.item.name}</TableCell>
+                  <TableCell align="right">{data.loaner}</TableCell>
+                  <TableCell align="right">{data.borrower}</TableCell>
+                  <TableCell align="right">{data.return_date}</TableCell>
+                  <TableCell align="right">{data.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
     </>
   );
 };
