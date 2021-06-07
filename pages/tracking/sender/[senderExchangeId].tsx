@@ -65,8 +65,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   ////Checking if 'context.query.senderExchangeId' is a string, and a number when parseInt
   let exchangeId: number = 0;
-  if (typeof context.query.senderExchangeId === "string") {
-    exchangeId = parseInt(context.query.senderExchangeId);
+  if (typeof context.params.senderExchangeId === "string") {
+    exchangeId = parseInt(context.params.senderExchangeId);
     if (Number.isNaN(exchangeId)) {
       exchangeId = 0;
     }

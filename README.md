@@ -54,6 +54,9 @@ MongoDB :
 Date-fns :
 `yarn add date-fns`
 
+Uuid :
+`yarn add uuid`
+
 Typescript :
 `yarn add --dev typescript @types/react`
 Renamme folder .js by .tsx

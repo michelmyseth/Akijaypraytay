@@ -10,6 +10,7 @@ export type Profile = {
 
 export type Exchange = {
   _id: any;
+  uuid: string;
   item: Object;
   loaner: string;
   borrower: string;

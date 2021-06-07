@@ -6,9 +6,11 @@ import { isValid, isAfter } from "date-fns";
 
 const Create: React.FC<Props> = ({ userData }) => {
   const today: string = new Date().toISOString().split("T")[0];
-  const [returnDate, setReturnDate] = React.useState<string>();
+  const [returnDate, setReturnDate] = React.useState<string>(undefined);
   const [isDateValid, setIsDateValid] = React.useState<boolean>(false);
   const [isLoaner, setIsLoaner] = React.useState<boolean>(false);
+  const [mailEntry, setMailEntry] = React.useState<string>(undefined);
+  const [isMailValid, setIsMailValid] = React.useState<boolean>(undefined);
 
   useEffect(() => {
     if (typeof returnDate !== "undefined") {
@@ -19,6 +21,16 @@ const Create: React.FC<Props> = ({ userData }) => {
       }
     }
   }, [returnDate]);
+
+  useEffect(() => {
+    if (typeof mailEntry !== "undefined") {
+      if (mailEntry !== userData.profile.mail) {
+        setIsMailValid(true);
+      } else {
+        setIsMailValid(false);
+      }
+    }
+  }, [mailEntry]);
 
   return (
     <div>
@@ -69,6 +81,7 @@ const Create: React.FC<Props> = ({ userData }) => {
             type="text"
             name={isLoaner ? "borrower" : "loaner"}
             placeholder={isLoaner ? "Borrower mail" : "Loaner mail"}
+            onChange={(event): void => setMailEntry(event.target.value)}
             required
           />
         </div>
@@ -100,7 +113,7 @@ const Create: React.FC<Props> = ({ userData }) => {
             value={isDateValid.toString()}
           />
           <br />
-          {/* {isDateValid ? (
+          {isMailValid ? (
             <button className="btn btn-outline-dark border m-1" type="submit">
               Submit
             </button>
@@ -108,13 +121,11 @@ const Create: React.FC<Props> = ({ userData }) => {
             <button
               className="btn btn-outline-dark border m-1 disabled"
               type="submit"
+              disabled
             >
               Submit
             </button>
-          )} */}
-          <button className="btn btn-outline-dark border m-1" type="submit">
-            Submit
-          </button>
+          )}
         </p>
       </form>
     </div>

@@ -16,7 +16,8 @@
     "next": "latest",
     "react": "^16.13.1",
     "react-bootstrap": "^1.6.0",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "uuid": "^8.3.2"
   },
   "license": "MIT",
   "devDependencies": {
