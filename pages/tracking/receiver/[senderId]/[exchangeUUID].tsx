@@ -33,7 +33,11 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
         {isDataValid ? (
           <div>
             <h2>Detail of exchange n°{userData._id}</h2>
-            <h5>{isLoaner ? "(loaned)" : "(borrow)"}</h5>
+            <h5>
+              {isLoaner
+                ? `(loaned to ${userData.borrower})`
+                : `(borrow from ${userData.loaner})`}
+            </h5>
           </div>
         ) : (
           "Exchange not found"

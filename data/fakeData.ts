@@ -13,27 +13,27 @@ export const fakeUser: Users[] = [
         {
           name: "Fondation",
           description: "By I. Asimov",
-          picture: "url",
+          category: "url",
         },
         {
           name: "Pen",
           description: "My favorite pen",
-          picture: "url2",
+          category: "url2",
         },
         {
           name: "T-shirt",
           description: "A blue t-shirt",
-          picture: "url",
+          category: "url",
         },
         {
           name: "Mouse",
           description: "Wireless computer mouse",
-          picture: "url",
+          category: "url",
         },
         {
           name: "Car",
           description: "My suppa car",
-          picture: "url",
+          category: "url",
         },
       ],
       token: "",
@@ -45,7 +45,7 @@ export const fakeUser: Users[] = [
         item: {
           name: "Fondation",
           description: "By I. Asimov",
-          picture: "url",
+          category: "url",
         },
         loaner: "john@mail.coml",
         borrower: "jane@mail.com",
@@ -59,7 +59,7 @@ export const fakeUser: Users[] = [
         item: {
           name: "Pen",
           description: "My favorite pen",
-          picture: "url2",
+          category: "url2",
         },
         loaner: "jane@mail.coml",
         borrower: "john@mail.com",
@@ -73,7 +73,7 @@ export const fakeUser: Users[] = [
         item: {
           name: "T-shirt",
           description: "A blue t-shirt",
-          picture: "url",
+          category: "url",
         },
         loaner: "john@mail.coml",
         borrower: "jane@mail.com",
@@ -87,7 +87,7 @@ export const fakeUser: Users[] = [
         item: {
           name: "Mouse",
           description: "Wireless computer mouse",
-          picture: "url",
+          category: "url",
         },
         loaner: "john@mail.coml",
         borrower: "jane@mail.com",
@@ -101,7 +101,7 @@ export const fakeUser: Users[] = [
         item: {
           name: "Car",
           description: "My suppa car",
-          picture: "url",
+          category: "url",
         },
         loaner: "john@mail.coml",
         borrower: "jane@mail.com",
