@@ -106,7 +106,7 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
             </div>
             <div className="col-lg-12">
               <div className="card">
-                <table className="table table-bordered">
+                <table className="table">
                   <thead>
                     <tr>
                       <th scope="col">id</th>
