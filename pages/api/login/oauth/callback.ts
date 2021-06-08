@@ -75,8 +75,6 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
         path: "/",
       })
     );
-    // response.setHeader("Location", "/transit/");
-    // response.end();
     response.redirect("/transit/");
   } else {
     // console.log(

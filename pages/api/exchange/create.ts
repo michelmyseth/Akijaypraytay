@@ -2,8 +2,10 @@ import { NextApiRequest, NextApiResponse, Redirect } from "next";
 import { getDatabase } from "../../../util/mongodb";
 import { Exchange, Object } from "../../../data/types/users";
 import { v4 as uuidv4 } from "uuid";
+import sendgrid, { send } from "@sendgrid/mail";
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
+  const uuidNewValue = uuidv4();
   if (request.method === "POST") {
     // console.log(request.body);
     const mongodb = await getDatabase();
@@ -15,11 +17,11 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     const exchangeData: Exchange[] = userData.exchange;
     exchangeData.push({
       _id: parseInt(request.body._id),
-      uuid: uuidv4(),
+      uuid: uuidNewValue,
       item: {
         name: request.body.name,
         description: request.body.description,
-        picture: request.body.picture,
+        category: request.body.category,
       },
       loaner: request.body.loaner,
       borrower: request.body.borrower,
@@ -48,7 +50,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
       ownedItemsData.push({
         name: request.body.name,
         description: request.body.description,
-        picture: request.body.picture,
+        category: request.body.category,
       });
     } else if (request.body.borrower === userData.profile.mail) {
       newContact.filter((contact: string) => {
@@ -75,6 +77,36 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
           },
         }
       );
+
+    //// @sendgrid/mail
+    let userMailTo: string = "";
+    let otherMailTo: string = "";
+    if (request.body.loaner === userData.profile.mail) {
+      userMailTo = request.body.loaner;
+      otherMailTo = request.body.borrower;
+    } else {
+      otherMailTo = request.body.loaner;
+      userMailTo = request.body.borrower;
+    }
+    sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+    const SENDGRID_DOMAIN_URL = process.env.SENDGRID_DOMAIN_URL;
+
+    //// SentMailToOther
+    const msg = {
+      to: otherMailTo,
+      from: "akijaypraytay@outlook.com",
+      subject: `Akijaypraytay : new exchange`,
+      text: `${userData.profile.username} sets an exchange with you for this object : ${request.body.name}`,
+      html: `${userData.profile.username} sets an exchange with you for this object : ${request.body.name} <button><a href=${SENDGRID_DOMAIN_URL}receiver/${userData._id}/${uuidNewValue}>Confirm</a></button>`,
+    };
+    sendgrid
+      .send(msg)
+      .then(() => {
+        console.log("Email sent");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     response.redirect(
       `/tracking/sender/${userData.exchange[userData.exchange.length - 1]._id}`

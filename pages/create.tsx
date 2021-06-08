@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
+import Navbar from "../components/Navbar";
 import { GetServerSideProps } from "next";
 import { Props } from "../data/types/props";
 import { checkingConnection } from "../util/checkingConnection";
 import { isValid, isAfter } from "date-fns";
+import { categories } from "../data/categories";
 
 const Create: React.FC<Props> = ({ userData }) => {
   const today: string = new Date().toISOString().split("T")[0];
@@ -11,6 +13,7 @@ const Create: React.FC<Props> = ({ userData }) => {
   const [isLoaner, setIsLoaner] = React.useState<boolean>(false);
   const [mailEntry, setMailEntry] = React.useState<string>(undefined);
   const [isMailValid, setIsMailValid] = React.useState<boolean>(undefined);
+  const [selectCategory, setSelectCategory] = React.useState<string>();
 
   useEffect(() => {
     if (typeof returnDate !== "undefined") {
@@ -66,19 +69,41 @@ const Create: React.FC<Props> = ({ userData }) => {
             required
           />
         </div>
-        <div>
+        {/* <div>
           <input
             className="fst-italic rounded m-1 text-dark"
-            type="text"
+            type="url"
             name="picture"
             placeholder="URL of your object"
+            pattern="https://.*"
             required
           />
+        </div> */}
+        <div>
+          <label>Select a category</label>
+          <br />
+          <select
+            name="category"
+            onChange={(event): void => setSelectCategory(event.target.value)}
+          >
+            {categories.map((category, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <option
+                    value={category.string}
+                    className="fst-italic rounded m-1 text-dark"
+                  >
+                    {category.string} {category.emoji}
+                  </option>
+                </React.Fragment>
+              );
+            })}
+          </select>
         </div>
         <div>
           <input
             className="fst-italic rounded m-1 text-dark"
-            type="text"
+            type="email"
             name={isLoaner ? "borrower" : "loaner"}
             placeholder={isLoaner ? "Borrower mail" : "Loaner mail"}
             onChange={(event): void => setMailEntry(event.target.value)}
@@ -112,6 +137,7 @@ const Create: React.FC<Props> = ({ userData }) => {
             name="valideDate"
             value={isDateValid.toString()}
           />
+          <input type="hidden" name={selectCategory} value={selectCategory} />
           <br />
           {isMailValid ? (
             <button className="btn btn-outline-dark border m-1" type="submit">

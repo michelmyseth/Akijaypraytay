@@ -22,7 +22,7 @@ export type Exchange = {
 export type Object = {
   name: string;
   description: string;
-  picture: any;
+  category: string;
 };
 
 export type Users = {
