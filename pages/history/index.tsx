@@ -166,7 +166,15 @@ const History: React.FC<Props> = ({ userData }) => {
                   <TableCell align="left" scope="row">
                     {data._id}
                   </TableCell>
-                  <TableCell align="left">{data.item.name}</TableCell>
+                  <TableCell align="left">
+                    {" "}
+                    <a
+                      className="btn btn-outline-dark border m-1"
+                      href={`/tracking/sender/${data._id}/`}
+                    >
+                      {data.item.name}
+                    </a>
+                  </TableCell>
                   <TableCell align="left">{data.loaner}</TableCell>
                   <TableCell align="left">{data.borrower}</TableCell>
                   <TableCell align="left">{data.return_date}</TableCell>

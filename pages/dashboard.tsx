@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { Props } from "../data/types/props";
 import { Users, Exchange } from "../data/types/users";

@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse, Redirect } from "next";
 import { getDatabase } from "../../../util/mongodb";
 import { Exchange, Object } from "../../../data/types/users";
 import { v4 as uuidv4 } from "uuid";
-import sendgrid, { send } from "@sendgrid/mail";
+import sendgrid from "@sendgrid/mail";
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
   const uuidNewValue = uuidv4();
@@ -97,7 +97,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
       from: "akijaypraytay@outlook.com",
       subject: `Akijaypraytay : new exchange`,
       text: `${userData.profile.username} sets an exchange with you for this object : ${request.body.name}`,
-      html: `${userData.profile.username} sets an exchange with you for this object : ${request.body.name} <button><a href=${SENDGRID_DOMAIN_URL}receiver/${userData._id}/${uuidNewValue}>Confirm</a></button>`,
+      html: `${userData.profile.username} sets an exchange with you for this object : ${request.body.name} <button><a href=${SENDGRID_DOMAIN_URL}receiver/${userData._id}/${uuidNewValue}>Check it out now</a></button>`,
     };
     sendgrid
       .send(msg)

@@ -14,7 +14,6 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     const adress = request.body.adress;
     console.log(request.body);
 
-    // console.log(userName);
     mongodb
       .db()
       .collection("users")

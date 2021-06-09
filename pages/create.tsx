@@ -10,7 +10,7 @@ const Create: React.FC<Props> = ({ userData }) => {
   const today: string = new Date().toISOString().split("T")[0];
   const [returnDate, setReturnDate] = React.useState<string>(undefined);
   const [isDateValid, setIsDateValid] = React.useState<boolean>(false);
-  const [isLoaner, setIsLoaner] = React.useState<boolean>(false);
+  const [isLoaner, setIsLoaner] = React.useState<boolean>(true);
   const [mailEntry, setMailEntry] = React.useState<string>(undefined);
   const [isMailValid, setIsMailValid] = React.useState<boolean>(undefined);
   const [selectCategory, setSelectCategory] = React.useState<string>();
@@ -43,14 +43,14 @@ const Create: React.FC<Props> = ({ userData }) => {
         action={`/api/exchange/create/`}
       >
         <div>
-          <input
+          {/* <input
             className="fst-italic rounded m-1 text-dark"
             type="checkbox"
             onChange={(): void => {
               isLoaner ? setIsLoaner(false) : setIsLoaner(true);
             }}
           />
-          <label>Loaner</label>
+          <label>Loaner</label> */}
           <br />
           <input
             className="fst-italic rounded m-1 text-dark"
