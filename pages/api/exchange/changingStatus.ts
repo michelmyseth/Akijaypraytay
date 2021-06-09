@@ -64,43 +64,43 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
   const SENDGRID_DOMAIN_URL = process.env.SENDGRID_DOMAIN_URL;
 
-  //// SentMailToBorrower
-  const borrowerMsg = {
-    to: `${borrowerAdressMail}`,
-    from: "akijaypraytay@outlook.com",
-    subject: `Akijaypraytay : update of your exchange`,
-    text: `Your borrowed object has just changed status`,
-    html: `Your borrowed object (${exchangeItem}) has just changed status : <strong>${exchangePreviousStatus}</strong> to <strong>${exchangeNewStatus}</strong> <p><button><a href=${SENDGRID_DOMAIN_URL}receiver/${userId}/${exchangeUUID}>Check it out now</a></button></p>`,
-  };
-  sendgrid
-    .send(borrowerMsg)
-    .then(() => {
-      console.log("Email sent");
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-
-  //// SentMailToLoaner
-  const loanerMsg = {
-    to: `${loanerAdressMail}`,
-    from: "akijaypraytay@outlook.com",
-    subject: `Akijaypraytay : update of your exchange`,
-    text: `Your borrowed object has just changed status`,
-    html: `Your loaned object (${exchangeItem}) has just changed status : <strong>${exchangePreviousStatus}</strong> to <strong>${exchangeNewStatus}</strong> <p><button><a href=${SENDGRID_DOMAIN_URL}sender/${exchangeIndex}>Check it out now</a></button></p>`,
-  };
-  sendgrid
-    .send(loanerMsg)
-    .then(() => {
-      console.log("Email sent");
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-
   if (isLoaner === "loaner") {
+    //// SentMailToBorrower
+    const borrowerMsg = {
+      to: `${borrowerAdressMail}`,
+      from: "akijaypraytay@outlook.com",
+      subject: `Akijaypraytay : update of your exchange`,
+      text: `Your borrowed object has just changed status`,
+      html: `Your borrowed object (${exchangeItem}) has just changed status : <strong>${exchangePreviousStatus}</strong> to <strong>${exchangeNewStatus}</strong> <p><button><a href=${SENDGRID_DOMAIN_URL}receiver/${userId}/${exchangeUUID}>Check it out now</a></button></p>`,
+    };
+    sendgrid
+      .send(borrowerMsg)
+      .then(() => {
+        console.log("Email sent");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     response.redirect(`/tracking/sender/${exchangeIndex + 1}/`);
   } else {
+    //// SentMailToLoaner
+    const loanerMsg = {
+      to: `${loanerAdressMail}`,
+      from: "akijaypraytay@outlook.com",
+      subject: `Akijaypraytay : update of your exchange`,
+      text: `Your borrowed object has just changed status`,
+      html: `Your loaned object (${exchangeItem}) has just changed status : <strong>${exchangePreviousStatus}</strong> to <strong>${exchangeNewStatus}</strong> <p><button><a href=${SENDGRID_DOMAIN_URL}sender/${exchangeIndex}>Check it out now</a></button></p>`,
+    };
+    sendgrid
+      .send(loanerMsg)
+      .then(() => {
+        console.log("Email sent");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     response.redirect(`/tracking/receiver/${userId}/${exchangeUUID}/`);
   }
 };
