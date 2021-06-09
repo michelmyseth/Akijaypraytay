@@ -28,6 +28,7 @@ Set each variable on `.env.local`:
 - `CONNECT_CLIENT_ID` - From authentication service provider @fewlines
 - `CONNECT_CLIENT_SECRET` - From authentication service provider @fewlines
 - `CONNECT_REDIRECT_URI` - From authentication service provider @fewlines, to be redirect on your site
+- `SENDGRID_API_KEY` - The Api's key for sending email
 
 ### Run Next.js in development mode
 
@@ -56,6 +57,9 @@ Date-fns :
 
 Uuid :
 `yarn add uuid`
+
+Sendgrid/mail
+`yarn add @sendgrid/mail`
 
 Typescript :
 `yarn add --dev typescript @types/react`

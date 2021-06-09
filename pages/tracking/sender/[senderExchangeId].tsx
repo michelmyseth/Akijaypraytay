@@ -34,10 +34,10 @@ const SenderExchangeId: React.FC<Props> = ({ userData, exchangeId }) => {
       {/* isExchangeIdValid */}
       <h1>
         {isExchangeIdValid ? (
-          <div>
+          <>
             <h2>Detail of exchange n°{exchangeId}</h2>
             <h5>{isLoaner ? "(loaned)" : "(borrow)"}</h5>
-          </div>
+          </>
         ) : (
           "Nothing here"
         )}
@@ -53,9 +53,12 @@ const SenderExchangeId: React.FC<Props> = ({ userData, exchangeId }) => {
           <li>{`${exchangeData.creation_date}`}</li>
         </ul>
       ) : (
-        <p>
-          Nothing to display for now : the exchange you searching doesn't not
-          exist, or it's time to go <Link href="/create/">create</Link> one !
+        <p className="text-center">
+          Nothing to display for now : the exchange you searching doesn't exist,
+          or it's time to make one !{" "}
+          <a className="btn btn-outline-dark border m-1" href="/create/">
+            Go !
+          </a>{" "}
         </p>
       )}
     </div>
