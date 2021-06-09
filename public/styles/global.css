@@ -1,11 +1,35 @@
 html,
+#navbarColor {
+  background-color: white;
+  box-shadow: 10px 1px 5px black;
+}
+
+#Footer {
+  background-color: #aaa;
+}
+
+#tabsposition {
+  margin-top: 100px;
+}
+
+/* #buttonLogin {
+  margin-left: 80px;
+} */
+
+#Allbutton {
+  background-color: #2893cc;
+  color: white;
+}
+
+#Tabs {
+  border: 1px solid grey;
+}
 body {
   height: 100vh;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: rgb(108, 118, 124);
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: #f5f5f5;
 }
 .footer {
   bottom: 0;

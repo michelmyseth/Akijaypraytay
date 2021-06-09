@@ -10,7 +10,7 @@ const Create: React.FC<Props> = ({ userData }) => {
   const today: string = new Date().toISOString().split("T")[0];
   const [returnDate, setReturnDate] = React.useState<string>(undefined);
   const [isDateValid, setIsDateValid] = React.useState<boolean>(false);
-  const [isLoaner, setIsLoaner] = React.useState<boolean>(false);
+  const [isLoaner, setIsLoaner] = React.useState<boolean>(true);
   const [mailEntry, setMailEntry] = React.useState<string>(undefined);
   const [isMailValid, setIsMailValid] = React.useState<boolean>(undefined);
   const [selectCategory, setSelectCategory] = React.useState<string>();
@@ -43,17 +43,17 @@ const Create: React.FC<Props> = ({ userData }) => {
         action={`/api/exchange/create/`}
       >
         <div>
-          <input
+          {/* <input
             className="fst-italic rounded m-1 text-dark"
             type="checkbox"
             onChange={(): void => {
               isLoaner ? setIsLoaner(false) : setIsLoaner(true);
             }}
           />
-          <label>Loaner</label>
+          <label>Loaner</label> */}
           <br />
           <input
-            className="fst-italic rounded m-1 text-dark"
+            className="form-control"
             type="text"
             name="name"
             placeholder="Name of your object"
@@ -62,7 +62,7 @@ const Create: React.FC<Props> = ({ userData }) => {
         </div>
         <div>
           <input
-            className="fst-italic rounded m-1 text-dark"
+            className="form-control"
             type="text"
             name="description"
             placeholder="Description"
@@ -79,10 +79,7 @@ const Create: React.FC<Props> = ({ userData }) => {
             {categories.map((category, index) => {
               return (
                 <React.Fragment key={index}>
-                  <option
-                    value={category.string}
-                    className="fst-italic rounded m-1 text-dark"
-                  >
+                  <option value={category.string} className="form-control">
                     {category.string} {category.emoji}
                   </option>
                 </React.Fragment>
@@ -92,7 +89,7 @@ const Create: React.FC<Props> = ({ userData }) => {
         </div>
         <div>
           <input
-            className="fst-italic rounded m-1 text-dark"
+            className="form-control"
             type="email"
             name={isLoaner ? "borrower" : "loaner"}
             placeholder={isLoaner ? "Borrower mail" : "Loaner mail"}
@@ -102,7 +99,7 @@ const Create: React.FC<Props> = ({ userData }) => {
         </div>
         <div>
           <input
-            className="fst-italic rounded m-1 text-dark"
+            className="form-control"
             type="date"
             min={today}
             max="2099-01-01"

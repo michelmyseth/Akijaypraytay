@@ -3,8 +3,13 @@ export default function Home() {
   return (
     <div className="">
       <div className="container ml-2">
-        lorem3000 <br />
-        <br />{" "}
+        <h2>Don't forget the items you lent to your friends </h2>
+        <button id="Allbutton" type="button" className="btn ">
+          GO !
+        </button>
+
+        <br />
+        <br />
       </div>
     </div>
   );

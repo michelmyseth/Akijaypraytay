@@ -4,8 +4,16 @@ import Link from "next/link";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar navbar-dark bg-dark fixed-top ">
-      <img className="rounded-circle" src="" alt="" width={30} height={40} />
+    <nav
+      id="navbarColor"
+      className="navbar p-2 navbar-expand-lg navbar navbar-light fixed-top "
+    >
+      <img
+        src="https://image.shutterstock.com/z/stock-vector-business-people-replacement-line-icon-linear-style-sign-for-mobile-concept-and-web-design-1649442850.jpg"
+        alt=""
+        width={30}
+        height={40}
+      />
       <a className="navbar-brand" href="/">
         <h3>Akijaypraytay</h3>
       </a>
@@ -44,6 +52,7 @@ const Navbar: React.FC = () => {
           </li> */}
         </ul>
         {/* dropdown */}
+<<<<<<< HEAD
         <div className="container">
           {/* <div className="dropdown d-flex flex-row-reverse"> */}
           <div className="dropdown d-flex justify-content-end">
@@ -53,6 +62,26 @@ const Navbar: React.FC = () => {
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
               aria-expanded="false"
+=======
+        <div
+          id="buttonLogin"
+          className="dropdown dropdown position-absolute top-50 end-0 translate-middle"
+        >
+          <button
+            className="btn text-black dropdown-toggle "
+            type="button"
+            id="Allbutton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="7em"
+              height="2em"
+              fill="white"
+              className="bi bi-person-circle"
+              viewBox="0 0 16 16"
+>>>>>>> 1ecdfa05de8fd7e0ac9e5a7981fb9c915120e05c
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
