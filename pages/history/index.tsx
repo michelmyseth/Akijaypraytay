@@ -76,6 +76,7 @@ const History: React.FC<Props> = ({ userData }) => {
         <Grid container>
           <Grid item xs={2}>
             <Button
+              id="Allbutton"
               onClick={() => {
                 setSelectStatus("All");
               }}
@@ -88,6 +89,7 @@ const History: React.FC<Props> = ({ userData }) => {
 
           <Grid item xs={2}>
             <Button
+              id="Allbutton"
               onClick={() => {
                 setSelectStatus("Waiting");
               }}
@@ -100,6 +102,7 @@ const History: React.FC<Props> = ({ userData }) => {
 
           <Grid item xs={2}>
             <Button
+              id="Allbutton"
               onClick={() => {
                 setSelectStatus("Pending");
               }}
@@ -112,6 +115,7 @@ const History: React.FC<Props> = ({ userData }) => {
 
           <Grid item xs={2}>
             <Button
+              id="Allbutton"
               onClick={() => {
                 setSelectStatus("Returned");
               }}
@@ -124,6 +128,7 @@ const History: React.FC<Props> = ({ userData }) => {
 
           <Grid item xs={2}>
             <Button
+              id="Allbutton"
               onClick={() => {
                 setSelectStatus("Not returned");
               }}
@@ -136,6 +141,7 @@ const History: React.FC<Props> = ({ userData }) => {
 
           <Grid item xs={2}>
             <Button
+              id="Allbutton"
               onClick={() => {
                 setSelectStatus("Abort");
               }}
