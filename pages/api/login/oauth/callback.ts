@@ -32,7 +32,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
         profile: {
           username: `${userInfoResponse.email}`,
           mail: `${userInfoResponse.email}`,
-          phone: 0,
+          phone: undefined,
           adress: "",
           contacts: [],
           ownedItems: [],

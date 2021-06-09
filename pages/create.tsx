@@ -69,16 +69,6 @@ const Create: React.FC<Props> = ({ userData }) => {
             required
           />
         </div>
-        {/* <div>
-          <input
-            className="fst-italic rounded m-1 text-dark"
-            type="url"
-            name="picture"
-            placeholder="URL of your object"
-            pattern="https://.*"
-            required
-          />
-        </div> */}
         <div>
           <label>Select a category</label>
           <br />
