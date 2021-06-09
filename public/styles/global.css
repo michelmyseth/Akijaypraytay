@@ -31,3 +31,8 @@ h6 {
 #cancelButton {
   margin-left: 15px;
 }
+
+/* .dropdown-menu[data-bs-popper] {
+  display: flex;
+  justify-content: end;
+} */
