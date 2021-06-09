@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { Props } from "../../../data/types/props";
 import { Exchange } from "../../../data/types/users";
@@ -33,12 +34,12 @@ const SenderExchangeId: React.FC<Props> = ({ userData, exchangeId }) => {
       {/* isExchangeIdValid */}
       <h1>
         {isExchangeIdValid ? (
-          <div>
+          <>
             <h2>Detail of exchange n°{exchangeId}</h2>
             <h5>{isLoaner ? "(loaned)" : "(borrow)"}</h5>
-          </div>
+          </>
         ) : (
-          "Exchange not found"
+          "Nothing here"
         )}
       </h1>
 
@@ -52,7 +53,13 @@ const SenderExchangeId: React.FC<Props> = ({ userData, exchangeId }) => {
           <li>{`${exchangeData.creation_date}`}</li>
         </ul>
       ) : (
-        "Nothing to display"
+        <p className="text-center">
+          Nothing to display for now : the exchange you searching doesn't exist,
+          or it's time to make one !{" "}
+          <a className="btn btn-outline-dark border m-1" href="/create/">
+            Go !
+          </a>{" "}
+        </p>
       )}
     </div>
   );

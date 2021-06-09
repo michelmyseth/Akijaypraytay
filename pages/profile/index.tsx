@@ -1,17 +1,20 @@
 import React from "react";
-
-import { connectToDatabase } from "../../util/mongodb";
-import { useState } from "react";
-
 import { GetServerSideProps } from "next";
-import { Users } from "../../data/types/users";
 import { Props } from "../../data/types/props";
 import { checkingConnection } from "../../util/checkingConnection";
+import { findingEmoji } from "../../util/findingEmoji";
 
 const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
-  const [display] = React.useState(userData.profile.adress);
-  const [contact] = React.useState(userData.profile.contacts);
+  const [isExchangesPresence, setIsExchangesPresence] =
+    React.useState<boolean>(null);
 
+  React.useEffect(() => {
+    if (userData.exchange.length > 0) {
+      setIsExchangesPresence(true);
+    } else {
+      setIsExchangesPresence(false);
+    }
+  }, []);
   return (
     <>
       <div className="container">
@@ -32,7 +35,9 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                         {userData.profile.username}
                       </p>
                       <p className="text-muted font-size-sm">
-                        {display === "" ? null : `${userData.profile.adress}`}
+                        {userData.profile.adress === ""
+                          ? null
+                          : `${userData.profile.adress}`}
                       </p>
                     </div>
                   </div>
@@ -83,7 +88,7 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                       <h6 className="mb-0">Contact</h6>
                     </div>
 
-                    {contact.length === 0 ? null : (
+                    {userData.profile.contacts.length === 0 ? null : (
                       <div className="col-sm-9 text-secondary">
                         <select name="username">
                           {userData.profile.contacts.map((user, index) => (
@@ -104,47 +109,38 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-12">
-              <div className="card">
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th scope="col">id</th>
-                      <th scope="col">Name items</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Images</th>
-                      <th scope="col">Loaner mail</th>
-                      <th scope="col">Borrower mail</th>
-                      <th scope="col">Return date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {userData.exchange.map((item) => {
-                      return (
-                        <>
-                          <tr>
-                            <th scope="row">{item._id}</th>
-                            <td>{item.item.name}</td>
-                            <td>{item.item.description}</td>
-                            <td>
-                              <img
-                                id="img-sizing"
-                                width="100%"
-                                src={item.item.picture}
-                                alt=""
-                              />
-                            </td>
-                            <td>{item.loaner}</td>
-                            <td>{item.borrower}</td>
-                            <td>{item.return_date}</td>
-                          </tr>
-                        </>
-                      );
-                    })}
-                  </tbody>
-                </table>
+            {isExchangesPresence ? (
+              <div className="col-lg-12">
+                <div className="card">
+                  <table className="table">
+                    <thead className="text-center">
+                      <tr>
+                        <th scope="col">Item's label</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Category</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-center">
+                      {userData.profile.ownedItems.map((item, index) => {
+                        return (
+                          <React.Fragment key={index + 1}>
+                            <tr>
+                              <td>{item.name}</td>
+                              <td>{item.description}</td>
+                              <td>
+                                {findingEmoji(item.category)} {item.category}
+                              </td>
+                            </tr>
+                          </React.Fragment>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

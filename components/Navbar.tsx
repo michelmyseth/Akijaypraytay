@@ -22,6 +22,11 @@ const Navbar: React.FC = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarText">
         <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <Link href="/dashboard/">
+              <a className="nav-link">Dashboard</a>
+            </Link>
+          </li>
           <li className="nav-item ">
             <Link href="/history/">
               <a className="nav-link">History</a>
@@ -30,11 +35,6 @@ const Navbar: React.FC = () => {
           <li className="nav-item">
             <Link href="/create/">
               <a className="nav-link">Create</a>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link href="/calendar/">
-              <a className="nav-link">Calendar</a>
             </Link>
           </li>
           {/* <li className="nav-item">

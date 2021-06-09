@@ -1,0 +1,15 @@
+export const categories: { string: string; emoji: string }[] = [
+  { string: "DIY tools", emoji: "🛠" },
+  { string: "Hi-tech", emoji: "🖥" },
+  { string: "Books", emoji: "📚" },
+  { string: "Clothes", emoji: "👕" },
+  { string: "Toys", emoji: "🧸" },
+  { string: "Sport", emoji: "🚲" },
+  { string: "Music", emoji: "🎸" },
+  { string: "Video games", emoji: "🎮" },
+  { string: "Kitchen", emoji: "🔪" },
+  { string: "Beauty", emoji: "💄" },
+  { string: "Furniture", emoji: "📓" },
+  { string: "Outdoors", emoji: "🏡" },
+  { string: "Everything else", emoji: "❔" },
+];
