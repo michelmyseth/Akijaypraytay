@@ -3,6 +3,13 @@ import { GetServerSideProps } from "next";
 import { Props } from "../../data/types/props";
 import { checkingConnection } from "../../util/checkingConnection";
 import { findingEmoji } from "../../util/findingEmoji";
+import { Container, TableContainer, Grid } from "@material-ui/core";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableRow from "@material-ui/core/TableRow";
+import TableHead from "@material-ui/core/TableHead";
+import TableCell from "@material-ui/core/TableCell";
+import Paper from "@material-ui/core/Paper";
 
 const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
   const [isExchangesPresence, setIsExchangesPresence] =
@@ -87,8 +94,7 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                     <div className="col-sm-3">
                       <h6 className="mb-0">Contact</h6>
                     </div>
-
-                    {userData.profile.contacts.length === 0 ? null : (
+                    {/* {userData.profile.contacts.length === 0 ? null : (
                       <div className="col-sm-9 text-secondary">
                         <select name="username">
                           {userData.profile.contacts.map((user, index) => (
@@ -96,12 +102,12 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                           ))}
                         </select>
                       </div>
-                    )}
+                    )} */}
                   </div>
                   <hr />
                   <div className="row">
                     <div className="col-sm-12">
-                      <a className="btn btn-info " href="/profile/edit">
+                      <a id="Allbutton" className="btn" href="/profile/edit">
                         Edit
                       </a>
                     </div>
@@ -110,34 +116,44 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
               </div>
             </div>
             {isExchangesPresence ? (
-              <div className="col-lg-12">
-                <div className="card">
-                  <table className="table">
-                    <thead className="text-center">
-                      <tr>
-                        <th scope="col">Item's label</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Category</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-center">
+              <Container maxWidth="lg">
+                <br />
+                <TableContainer component={Paper}>
+                  <Table aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell key="Item Label's" align="center">
+                          Item Label's
+                        </TableCell>
+                        <TableCell key="Details" align="center">
+                          Description
+                        </TableCell>
+                        <TableCell key="Description" align="center">
+                          Category
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
                       {userData.profile.ownedItems.map((item, index) => {
                         return (
-                          <React.Fragment key={index + 1}>
-                            <tr>
-                              <td>{item.name}</td>
-                              <td>{item.description}</td>
-                              <td>
-                                {findingEmoji(item.category)} {item.category}
-                              </td>
-                            </tr>
-                          </React.Fragment>
+                          <TableRow key={index + 1}>
+                            <TableCell align="center" scope="row">
+                              {item.name}
+                            </TableCell>
+                            <TableCell align="center">
+                              {item.description}
+                            </TableCell>
+                            <TableCell align="center">
+                              {findingEmoji(item.category)} {item.category}
+                            </TableCell>
+                          </TableRow>
                         );
                       })}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+                <br />
+              </Container>
             ) : (
               ""
             )}

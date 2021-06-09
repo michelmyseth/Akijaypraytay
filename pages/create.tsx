@@ -53,7 +53,7 @@ const Create: React.FC<Props> = ({ userData }) => {
           <label>Loaner</label> */}
           <br />
           <input
-            className="fst-italic rounded m-1 text-dark"
+            className="form-control"
             type="text"
             name="name"
             placeholder="Name of your object"
@@ -62,7 +62,7 @@ const Create: React.FC<Props> = ({ userData }) => {
         </div>
         <div>
           <input
-            className="fst-italic rounded m-1 text-dark"
+            className="form-control"
             type="text"
             name="description"
             placeholder="Description"
@@ -79,10 +79,7 @@ const Create: React.FC<Props> = ({ userData }) => {
             {categories.map((category, index) => {
               return (
                 <React.Fragment key={index}>
-                  <option
-                    value={category.string}
-                    className="fst-italic rounded m-1 text-dark"
-                  >
+                  <option value={category.string} className="form-control">
                     {category.string} {category.emoji}
                   </option>
                 </React.Fragment>
@@ -92,7 +89,7 @@ const Create: React.FC<Props> = ({ userData }) => {
         </div>
         <div>
           <input
-            className="fst-italic rounded m-1 text-dark"
+            className="form-control"
             type="email"
             name={isLoaner ? "borrower" : "loaner"}
             placeholder={isLoaner ? "Borrower mail" : "Loaner mail"}
@@ -102,7 +99,7 @@ const Create: React.FC<Props> = ({ userData }) => {
         </div>
         <div>
           <input
-            className="fst-italic rounded m-1 text-dark"
+            className="form-control"
             type="date"
             min={today}
             max="2099-01-01"

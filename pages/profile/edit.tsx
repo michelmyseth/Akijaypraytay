@@ -46,10 +46,10 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
               <div className="card mb-3">
                 <div className="card-body">
                   <div className="row">
-                    <div className="col-sm-3">test</div>
+                    <div className="col-sm-3"></div>
                     <div className="col-sm-9 text-secondary">
                       <form method="POST" action="/api/edit">
-                        <div className="form-group">
+                        <div className="form">
                           <input
                             type="username"
                             className="form-control"
@@ -60,8 +60,9 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                             maxLength={10}
                           />
                         </div>
+                        <br />
 
-                        <div className="form-group">
+                        <div className="form">
                           <input
                             type="tel"
                             className="form-control"
@@ -71,7 +72,8 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                             placeholder="Enter Phone Number"
                           />
                         </div>
-                        <div className="form-group">
+                        <br />
+                        <div className="form">
                           <input
                             type="adress"
                             className="form-control"
@@ -82,11 +84,12 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
                             maxLength={30}
                           />
                         </div>
-                        <button type="submit" className="btn btn-primary">
+                        <br />
+                        <button id="Allbutton" type="submit" className="btn">
                           Valider
                         </button>
                         <a
-                          className="btn btn-primary"
+                          className="btn btn-dark"
                           href="/profile"
                           id="cancelButton"
                         >
