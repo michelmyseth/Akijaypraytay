@@ -1,15 +1,18 @@
 import React from "react";
-import Link from "next/link";
 import { GetServerSideProps } from "next";
 import { Props } from "../../../data/types/props";
 import { Exchange } from "../../../data/types/users";
 import { checkingConnection } from "../../../util/checkingConnection";
+import { isValid, isAfter } from "date-fns";
 
 const SenderExchangeId: React.FC<Props> = ({ userData, exchangeId }) => {
+  const today: string = new Date().toISOString().split("T")[0];
+  const [isDateValid, setIsDateValid] = React.useState<boolean>(false);
   const [isExchangeIdValid, setIsExchangeIdValid] =
     React.useState<boolean>(false);
   const [exchangeData, setExchangeData] = React.useState<Exchange>(undefined);
   const [isLoaner, setIsLoaner] = React.useState<boolean>(undefined);
+  const [currentStatus, setCurrentStatus] = React.useState<string>();
 
   React.useEffect(() => {
     if (exchangeId - 1 < 0) {
@@ -18,6 +21,7 @@ const SenderExchangeId: React.FC<Props> = ({ userData, exchangeId }) => {
       if (userData.exchange.length >= exchangeId) {
         setIsExchangeIdValid(true);
         setExchangeData(userData.exchange[exchangeId - 1]);
+        setCurrentStatus(userData.exchange[exchangeId - 1].status);
         if (
           userData.profile.mail === userData.exchange[exchangeId - 1].loaner
         ) {
@@ -25,33 +29,92 @@ const SenderExchangeId: React.FC<Props> = ({ userData, exchangeId }) => {
         } else {
           setIsLoaner(false);
         }
+        if (
+          typeof userData.exchange[exchangeId - 1].return_date !== "undefined"
+        ) {
+          if (
+            isAfter(
+              new Date(today),
+              new Date(userData.exchange[exchangeId - 1].return_date)
+            )
+          ) {
+            setIsDateValid(
+              isValid(new Date(userData.exchange[exchangeId - 1].return_date))
+            );
+          } else {
+            setIsDateValid(false);
+          }
+        }
       }
     }
   }, []);
 
   return (
     <div>
-      {/* isExchangeIdValid */}
-      <h1>
-        {isExchangeIdValid ? (
-          <>
-            <h2>Detail of exchange n°{exchangeId}</h2>
-            <h5>{isLoaner ? "(loaned)" : "(borrow)"}</h5>
-          </>
-        ) : (
-          "Nothing here"
-        )}
-      </h1>
-
-      {/* Detail */}
       {isExchangeIdValid ? (
-        <ul>
-          <h3>{`${exchangeData.item.name}`}</h3>
-
-          <li>{`${exchangeData.item.description}`}</li>
-
-          <li>{`${exchangeData.creation_date}`}</li>
-        </ul>
+        <>
+          <ul>
+            <h1>
+              <>
+                <h2>Detail of exchange n°{exchangeId}</h2>
+                <h5>{isLoaner ? "(loaned)" : "(borrow)"}</h5>
+              </>
+            </h1>
+            <br />
+            <h3>{`${exchangeData.item.name}`}</h3>
+            {`${exchangeData.item.description}`}
+            <div>Creation date : {`${exchangeData.creation_date}`}</div>
+            <div>Return date : {`${exchangeData.return_date}`}</div>
+            <br />
+            <h5>{currentStatus}</h5>
+            {/* PENDING STATUS */}
+            {currentStatus === "Pending" ? (
+              <form
+                className="container-fluid"
+                method="POST"
+                action={`/api/exchange/changingStatus/`}
+              >
+                <input
+                  type="hidden"
+                  name="exchangeIndex"
+                  value={exchangeId - 1}
+                />
+                <input type="hidden" name="from" value="loaner" />
+                <input type="hidden" name="userId" value={userData._id} />
+                <button
+                  className="btn btn-light text-dark border m-1"
+                  type="submit"
+                  name="status"
+                  value="Returned"
+                >
+                  Returned
+                </button>
+                {isDateValid ? (
+                  <button
+                    className="btn btn-dark text-light border m-1"
+                    type="submit"
+                    name="status"
+                    value="Not returned"
+                  >
+                    Not returned
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-dark text-light border m-1"
+                    type="submit"
+                    name="status"
+                    value="Not returned"
+                    disabled
+                  >
+                    Not returned
+                  </button>
+                )}
+              </form>
+            ) : (
+              ""
+            )}
+          </ul>
+        </>
       ) : (
         <p className="text-center">
           Nothing to display for now : the exchange you searching doesn't exist,
