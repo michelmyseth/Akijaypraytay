@@ -21,14 +21,25 @@ const Home: React.FC<{ isToken: boolean }> = ({ isToken }) => {
             <br />
             <br />
             <div className="d-flex justify-content-center">
-              <a
-                id="Allbutton"
-                className="btn btn-lg"
-                href="api/login/"
-                role="button"
-              >
-                TRY IT !
-              </a>
+              {isToken ? (
+                <a
+                  id="Allbutton"
+                  className="btn btn-lg"
+                  href="api/login/"
+                  role="button"
+                >
+                  My Dashboard
+                </a>
+              ) : (
+                <a
+                  id="Allbutton"
+                  className="btn btn-lg"
+                  href="api/login/"
+                  role="button"
+                >
+                  TRY IT
+                </a>
+              )}
             </div>
           </div>
           <div id="colBody" className="col"></div>
