@@ -6,6 +6,7 @@ import { Users } from "../../data/types/users";
 import { Props } from "../../data/types/props";
 import { checkingConnection } from "../../util/checkingConnection";
 import Navbar from "../../components/Navbar";
+import { colors } from "@material-ui/core";
 
 const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
   const [displayAdress] = React.useState(userData.profile.adress);
@@ -94,16 +95,18 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
                           />
                         </div>
                         <br />
-                        <button type="submit" className="btn btn-success">
+                        <button id="Allbutton" type="submit" className="btn">
                           Confirm
                         </button>
-                        <a
-                          className="btn btn-dark"
-                          href="/profile"
-                          id="cancelButton"
-                        >
-                          Cancel
-                        </a>
+                        <button id="Rejectbutton" className="btn">
+                          <a
+                            className="rejectButtonStyle"
+                            style={{ color: "white" }}
+                            href="/profile"
+                          >
+                            Cancel
+                          </a>
+                        </button>
                       </form>
                     </div>
                   </div>

@@ -39,9 +39,9 @@ const Create: React.FC<Props> = ({ userData, isToken }) => {
       <Navbar isConnect={isToken} />
       <div id="createform" className="container">
         <Paper id="paperClue" elevation={3}>
-          <h3 id="createFormTitle" className="pt-3">
-            Fill the form
-          </h3>
+          <h4 id="createFormTitle" className="pt-3">
+            What do you want to lend ?
+          </h4>
           <form
             className="container-fluid mb-2"
             method="POST"
@@ -89,7 +89,7 @@ const Create: React.FC<Props> = ({ userData, isToken }) => {
                   return (
                     <React.Fragment key={index}>
                       <option value={category.string} className="form-control">
-                        {category.string} {category.emoji}
+                        {category.emoji} {category.string}
                       </option>
                     </React.Fragment>
                   );

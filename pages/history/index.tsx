@@ -13,7 +13,6 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
-
 const History: React.FC<Props> = ({ userData, isToken }) => {
   const [orderDirection, setOrderDirection] = React.useState("");
   const [valueToOrderBy, setValueToOrderBy] = React.useState("");
@@ -72,7 +71,6 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
         <Grid container>
           <br />
           <br />
-
           <br />
           <Grid item xs={2} className="text-center">
             <Button
@@ -168,20 +166,20 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
                   <TableCell align="center" scope="row">
                     {data._id}
                   </TableCell>
+                  <TableCell align="center">{data.item.name}</TableCell>
+                  <TableCell align="center">{data.loaner}</TableCell>
+                  <TableCell align="center">{data.borrower}</TableCell>
+                  <TableCell align="center">{data.return_date}</TableCell>
+                  <TableCell align="center">{data.status}</TableCell>
                   <TableCell align="center">
-                    {" "}
                     <a
                       id="Allbutton"
                       className="btn btn-outline "
                       href={`/tracking/sender/${data._id}/`}
                     >
-                      {data.item.name}
+                      See details
                     </a>
                   </TableCell>
-                  <TableCell align="center">{data.loaner}</TableCell>
-                  <TableCell align="center">{data.borrower}</TableCell>
-                  <TableCell align="center">{data.return_date}</TableCell>
-                  <TableCell align="center">{data.status}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

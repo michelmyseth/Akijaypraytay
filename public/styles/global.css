@@ -7,7 +7,7 @@ html,
 #colBody {
   background-image: url(/img/homepage.jpg);
   background-size: cover;
-  height: 550px;
+  height: 500px;
   opacity: 0.7;
   margin-top: 20px;
 }
@@ -36,8 +36,26 @@ html,
 } */
 
 #Allbutton {
-  background-color: #2893cc;
+  background-color: #01b1a3;
   color: white;
+}
+
+#Rejectbutton {
+  background-color: #f19c2c;
+  color: white;
+  margin-left: 15px;
+}
+
+.rejectButtonStyle {
+  text-decoration: none;
+}
+
+#colorBorder {
+  border-top: solid #01b1a3 1px;
+}
+
+#AllcolorBorder {
+  border: solid #01b1a3 1px;
 }
 
 #paperClue {
@@ -95,10 +113,6 @@ h6 {
 #img-sizing {
   width: 100px;
   height: 100px;
-}
-
-#cancelButton {
-  margin-left: 15px;
 }
 
 .h-100 {

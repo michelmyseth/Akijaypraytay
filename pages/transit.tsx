@@ -5,7 +5,9 @@ import Navbar from "../components/Navbar";
 
 const Continue: React.FC<{ isToken: boolean }> = ({ isToken }) => {
   React.useEffect(() => {
-    window.location.href = "/profile/";
+    setTimeout(() => {
+      window.location.href = "/profile/";
+    }, 3000);
   }, []);
   return (
     <>
