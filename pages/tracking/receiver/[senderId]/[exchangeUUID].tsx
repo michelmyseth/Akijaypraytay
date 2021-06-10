@@ -108,7 +108,7 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
                 <input type="hidden" name="userId" value={userID} />
                 <div className="d-grid gap-2 d-md-flex justify-content-md-center">
                   <button
-                    className="btn btn-light text-dark border m-1"
+                    className="btn btn-success text-light border m-1"
                     type="submit"
                     name="status"
                     value="Pending"

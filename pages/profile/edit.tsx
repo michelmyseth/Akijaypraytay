@@ -94,8 +94,8 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
                           />
                         </div>
                         <br />
-                        <button id="Allbutton" type="submit" className="btn">
-                          Valider
+                        <button type="submit" className="btn btn-success">
+                          Confirm
                         </button>
                         <a
                           className="btn btn-dark"

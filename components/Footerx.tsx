@@ -23,6 +23,7 @@ const Footerx: React.FC = () => {
                       <a
                         href="https://github.com/logansel/Akijaypraytay/blob/main/README.md"
                         className="text-dark"
+                        target="_blank"
                       >
                         GitHub
                       </a>
