@@ -12,7 +12,10 @@ import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Link from "next/link";
-const History: React.FC<Props> = ({ userData }) => {
+import Navbar from "../../components/Navbar";
+
+const History: React.FC<Props> = ({ userData, isToken }) => {
+
   const [orderDirection, setOrderDirection] = React.useState("");
   const [valueToOrderBy, setValueToOrderBy] = React.useState("");
   const [selectStatus, setSelectStatus] = React.useState("All");
@@ -65,6 +68,7 @@ const History: React.FC<Props> = ({ userData }) => {
   // console.log(selectData);
   return (
     <>
+      <Navbar isConnect={isToken} />
       <Container maxWidth="lg">
         <Grid container>
           <br />

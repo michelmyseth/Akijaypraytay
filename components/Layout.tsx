@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React from "react";
 import Head from "next/head";
-import Navbar from "./Navbar";
 import Footerx from "./Footerx";
+
 const Layout: React.FC = ({ children }) => {
   return (
     <div className="min-vh-100 flex-column d-flex bodycss">
@@ -19,7 +19,6 @@ const Layout: React.FC = ({ children }) => {
           ></link>
           <link rel="icon" href="" />
         </Head>
-        <Navbar />
         <br />
         <br />
         <br />

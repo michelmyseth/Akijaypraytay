@@ -12,9 +12,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
 import Navbar from "../components/Navbar";
-import Footerx from "../components/Footerx";
 
-const Dashboard: React.FC<Props> = ({ userData }) => {
+const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
   const [isLoanerExchangesPresence, setIsLoanerExchangesPresence] =
     React.useState<boolean>(null);
   const [isBorrowerExchangesPresence, setIsBorrowerExchangesPresence] =
@@ -71,6 +70,7 @@ const Dashboard: React.FC<Props> = ({ userData }) => {
 
   return (
     <div>
+      <Navbar isConnect={isToken} />
       <Container maxWidth="lg">
         <h1 id="titleDashboard" className="text-center">
           Welcome {userData.profile.username}

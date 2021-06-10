@@ -29,6 +29,7 @@ export const checkingConnection = async (
         userData: JSON.parse(JSON.stringify(findingDB)),
         exchangeId: exchangeId,
         senderId: senderId,
+        isToken: true,
       },
     };
   } else {
