@@ -46,12 +46,16 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
 
       {isDataValid ? (
         <Container maxWidth="sm">
-          <div className="card border-info mb-3" style={{ width: "18 em" }}>
+          <div
+            id="AllcolorBorder"
+            className="card mb-3"
+            style={{ width: "18 em" }}
+          >
             <div className="card-body ">
               <strong> Detail of exchange</strong> n°
               {userData._id}
             </div>
-            <div className="card-footer bg-transparent border-info">
+            <div id="colorBorder" className="card-footer bg-transparent ">
               <p className="card-text">
                 {isLoaner ? (
                   <>
@@ -64,7 +68,7 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
                 )}
               </p>
             </div>
-            <div className="card-footer bg-transparent border-info">
+            <div id="colorBorder" className="card-footer bg-transparent ">
               <div>
                 <strong> Category : </strong>
                 {userData.item.category}
@@ -77,7 +81,7 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
               {userData.item.description}
             </div>
 
-            <div className="card-footer bg-transparent border-info">
+            <div id="colorBorder" className="card-footer bg-transparent ">
               <div>
                 <strong>Creation date : </strong>
                 {`${userData.creation_date}`}
@@ -87,7 +91,7 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
                 <strong> Return date :</strong> {`${userData.return_date}`}
               </div>
             </div>
-            <div className="card-footer bg-transparent border-info">
+            <div id="colorBorder" className="card-footer bg-transparent ">
               <p>
                 {" "}
                 <strong>Status :</strong> {`${currentStatus}`}
@@ -108,7 +112,8 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
                 <input type="hidden" name="userId" value={userID} />
                 <div className="d-grid gap-2 d-md-flex justify-content-md-center">
                   <button
-                    className="btn btn-success text-light border m-1"
+                    id="Allbutton"
+                    className="btn text-light border m-1"
                     type="submit"
                     name="status"
                     value="Pending"
@@ -116,7 +121,8 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
                     Confirm
                   </button>
                   <button
-                    className="btn btn-dark text-light border m-1"
+                    id="Rejectbutton"
+                    className="btn text-light border m-1"
                     type="submit"
                     name="status"
                     value="Abort"

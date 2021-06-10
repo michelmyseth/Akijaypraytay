@@ -6,7 +6,8 @@ const NotFound: React.FC<{ isConnect: boolean }> = ({ isConnect }) => {
     <div className="container-xl">
       <div className="row d-flex align-items">
         <div className="col-6">
-          <img src="/img/3.png" width="800" height="600" />
+          <br />
+          <img src="/img/3.png" width="450" height="450" />
         </div>
         <div className="col-6">
           <br />

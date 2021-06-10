@@ -65,17 +65,21 @@ const SenderExchangeId: React.FC<Props> = ({
 
       {isExchangeIdValid ? (
         <Container maxWidth="sm">
-          <div className="card border-info mb-3" style={{ width: "18 em" }}>
+          <div
+            id="AllcolorBorder"
+            className="card mb-3"
+            style={{ width: "18 em" }}
+          >
             <div className="card-body ">
               <strong> Detail of exchange</strong> n°
               {exchangeId}
             </div>
-            <div className="card-footer bg-transparent border-info">
+            <div id="colorBorder" className="card-footer bg-transparent ">
               <p className="card-text">
                 <strong> Loaned : </strong> {exchangeData.item.name}
               </p>
             </div>
-            <div className="card-footer bg-transparent border-info">
+            <div id="colorBorder" className="card-footer bg-transparent">
               <div>
                 <strong> Category : </strong> {exchangeData.item.category}
               </div>
@@ -84,7 +88,7 @@ const SenderExchangeId: React.FC<Props> = ({
               </div>
               <strong> Description : </strong> {exchangeData.item.description}
             </div>
-            <div className="card-footer bg-transparent border-info">
+            <div id="colorBorder" className="card-footer bg-transparent">
               <div>
                 <strong>Creation date : </strong>
                 {`${exchangeData.creation_date}`}
@@ -97,7 +101,7 @@ const SenderExchangeId: React.FC<Props> = ({
                 </strong> {`${exchangeData.return_date}`}{" "}
               </div>
             </div>
-            <div className="card-footer bg-transparent border-info">
+            <div id="colorBorder" className="card-footer bg-transparent">
               <p>
                 {" "}
                 <strong>Status :</strong> {`${currentStatus}`}
@@ -118,7 +122,8 @@ const SenderExchangeId: React.FC<Props> = ({
                 <input type="hidden" name="userId" value={userData._id} />
                 <div className="d-grid gap-2 d-md-flex justify-content-md-center">
                   <button
-                    className="btn btn-success text-light border m-1"
+                    id="Allbutton"
+                    className="btn text-light border m-1"
                     type="submit"
                     name="status"
                     value="Returned"
@@ -127,7 +132,8 @@ const SenderExchangeId: React.FC<Props> = ({
                   </button>
                   {isDateValid ? (
                     <button
-                      className="btn btn-dark text-light border m-1"
+                      id="Rejectbutton"
+                      className="btn btn text-light border m-1"
                       type="submit"
                       name="status"
                       value="Not returned"
@@ -136,7 +142,8 @@ const SenderExchangeId: React.FC<Props> = ({
                     </button>
                   ) : (
                     <button
-                      className="btn btn-dark text-light border m-1"
+                      id="Rejectbutton"
+                      className="btn text-light border m-1"
                       type="submit"
                       name="status"
                       value="Not returned"

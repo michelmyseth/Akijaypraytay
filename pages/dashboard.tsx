@@ -12,7 +12,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
 import Navbar from "../components/Navbar";
-
 const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
   const [isLoanerExchangesPresence, setIsLoanerExchangesPresence] =
     React.useState<boolean>(null);
@@ -24,7 +23,6 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
     React.useState<number>(null);
   const [loanerData, setLoanerData] = React.useState<Exchange[]>();
   const [borrowerData, setBorrowerData] = React.useState<Exchange[]>();
-
   React.useEffect(() => {
     ////Loaner exchanges
     const loanerDataArray: Exchange[] = [];
@@ -67,7 +65,6 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
       setIsBorrowerExchangesPresence(false);
     }
   }, []);
-
   return (
     <div>
       <Navbar isConnect={isToken} />
@@ -88,7 +85,7 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
                     Item Label's
                   </TableCell>
                   <TableCell key="Details" align="center">
-                    Details
+                    Object
                   </TableCell>
                   <TableCell key="Description" align="center">
                     Description
@@ -102,6 +99,9 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
                   <TableCell key="Loaner" align="center">
                     Status
                   </TableCell>
+                  <TableCell key="Loaner" align="center">
+                    See details
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -112,15 +112,7 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
                         <TableCell align="center" scope="row">
                           {findingEmoji(item.item.category)}
                         </TableCell>
-                        <TableCell align="center">
-                          <a
-                            className="btn border m-1"
-                            id="Allbutton"
-                            href={`/tracking/sender/${item._id}/`}
-                          >
-                            {item.item.name}
-                          </a>
-                        </TableCell>
+                        <TableCell align="center">{item.item.name}</TableCell>
                         <TableCell align="center">
                           {item.item.description}
                         </TableCell>
@@ -129,6 +121,15 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
                         </TableCell>
                         <TableCell align="center">{item.borrower}</TableCell>
                         <TableCell align="center">{item.status}</TableCell>
+                        <TableCell align="center">
+                          <a
+                            className="btn border m-1"
+                            id="Allbutton"
+                            href={`/tracking/sender/${item._id}/`}
+                          >
+                            See details
+                          </a>
+                        </TableCell>
                       </TableRow>
                     );
                   }
@@ -190,14 +191,10 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
     </div>
   );
 };
-
 export default Dashboard;
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userToken = context.req.cookies.token;
-
   const checkConnectionValidity = await checkingConnection(userToken);
   // console.log("DB", checkConnectionValidity);
-
   return checkConnectionValidity;
 };

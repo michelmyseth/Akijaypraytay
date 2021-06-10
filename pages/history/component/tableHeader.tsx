@@ -71,6 +71,9 @@ export default function TableHeader(props) {
             Status
           </TableSortLabel>
         </TableCell>
+        <TableCell key="return_date" align="center">
+          See details
+        </TableCell>
       </TableRow>
     </TableHead>
   );
