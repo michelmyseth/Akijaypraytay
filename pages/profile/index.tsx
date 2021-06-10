@@ -26,6 +26,7 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
   return (
     <>
       <Navbar isConnect={isToken} />
+      <br />
       <div className="container">
         <div className="main-body">
           <div className="row gutters-sm">
@@ -58,7 +59,7 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
                 <div className="card-body">
                   <div className="row">
                     <div className="col-sm-3">
-                      <h6 className="mb-0">Username</h6>
+                      <h6 className="mb-0">Username </h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
                       {userData.profile.username}
@@ -91,12 +92,8 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
                       {userData.profile.adress}
                     </div>
                   </div>
-                  <hr />
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <h6 className="mb-0">Contact</h6>
-                    </div>
-                    {/* {userData.profile.contacts.length === 0 ? null : (
+
+                  {/* {userData.profile.contacts.length === 0 ? null : (
                       <div className="col-sm-9 text-secondary">
                         <select name="username">
                           {userData.profile.contacts.map((user, index) => (
@@ -105,7 +102,6 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
                         </select>
                       </div>
                     )} */}
-                  </div>
                   <hr />
                   <div className="row">
                     <div className="col-sm-12">

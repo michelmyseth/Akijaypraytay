@@ -88,3 +88,7 @@ h6 {
 #cancelButton {
   margin-left: 15px;
 }
+
+.h-100 {
+  background-color: #f5f5f5;
+}

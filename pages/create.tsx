@@ -8,9 +8,7 @@ import { categories } from "../data/categories";
 
 import { Paper } from "@material-ui/core";
 
-
 const Create: React.FC<Props> = ({ userData, isToken }) => {
-
   const today: string = new Date().toISOString().split("T")[0];
   const [returnDate, setReturnDate] = React.useState<string>(undefined);
   const [isDateValid, setIsDateValid] = React.useState<boolean>(false);
@@ -38,7 +36,7 @@ const Create: React.FC<Props> = ({ userData, isToken }) => {
   }, [mailEntry]);
   return (
     <div>
-     <Navbar isConnect={isToken} />
+      <Navbar isConnect={isToken} />
       <div id="createform" className="container">
         <Paper id="paperClue" elevation={3}>
           <h3 id="createFormTitle" className="pt-3">
@@ -48,7 +46,6 @@ const Create: React.FC<Props> = ({ userData, isToken }) => {
             className="container-fluid mb-2"
             method="POST"
             action={`/api/exchange/create/`}
-
           >
             <div>
               {/* <input
@@ -161,6 +158,7 @@ const Create: React.FC<Props> = ({ userData, isToken }) => {
                 </button>
               )}
             </p>
+            <br />
           </form>
         </Paper>
       </div>
