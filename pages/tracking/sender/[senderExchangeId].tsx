@@ -4,8 +4,13 @@ import { Props } from "../../../data/types/props";
 import { Exchange } from "../../../data/types/users";
 import { checkingConnection } from "../../../util/checkingConnection";
 import { isValid, isAfter } from "date-fns";
+import Navbar from "../../../components/Navbar";
 
-const SenderExchangeId: React.FC<Props> = ({ userData, exchangeId }) => {
+const SenderExchangeId: React.FC<Props> = ({
+  userData,
+  exchangeId,
+  isToken,
+}) => {
   const today: string = new Date().toISOString().split("T")[0];
   const [isDateValid, setIsDateValid] = React.useState<boolean>(false);
   const [isExchangeIdValid, setIsExchangeIdValid] =
@@ -51,6 +56,7 @@ const SenderExchangeId: React.FC<Props> = ({ userData, exchangeId }) => {
 
   return (
     <div>
+      <Navbar isConnect={isToken} />
       {isExchangeIdValid ? (
         <>
           <ul>

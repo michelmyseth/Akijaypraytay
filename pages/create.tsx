@@ -6,7 +6,7 @@ import { checkingConnection } from "../util/checkingConnection";
 import { isValid, isAfter } from "date-fns";
 import { categories } from "../data/categories";
 
-const Create: React.FC<Props> = ({ userData }) => {
+const Create: React.FC<Props> = ({ userData, isToken }) => {
   const today: string = new Date().toISOString().split("T")[0];
   const [returnDate, setReturnDate] = React.useState<string>(undefined);
   const [isDateValid, setIsDateValid] = React.useState<boolean>(false);
@@ -37,6 +37,7 @@ const Create: React.FC<Props> = ({ userData }) => {
 
   return (
     <div>
+      <Navbar isConnect={isToken} />
       <form
         className="container-fluid"
         method="POST"

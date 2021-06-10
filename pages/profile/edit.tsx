@@ -5,11 +5,15 @@ import { GetServerSideProps } from "next";
 import { Users } from "../../data/types/users";
 import { Props } from "../../data/types/props";
 import { checkingConnection } from "../../util/checkingConnection";
-const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
+import Navbar from "../../components/Navbar";
+
+const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
   const [displayAdress] = React.useState(userData.profile.adress);
   const [displayPhone] = React.useState(userData.profile.phone);
+
   return (
     <>
+      <Navbar isConnect={isToken} />
       <div className="container">
         <div className="main-body">
           <div className="row gutters-sm">
