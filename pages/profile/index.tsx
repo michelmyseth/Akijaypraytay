@@ -56,7 +56,7 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
             </div>
             <div className="col-md-8">
               <div className="card mb-3">
-                <div className="card-body">
+                <div className="card-body m-4">
                   <div className="row">
                     <div className="col-sm-3">
                       <h6 className="mb-0">Username </h6>
@@ -114,7 +114,7 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
               </div>
             </div>
             {isExchangesPresence ? (
-              <Container maxWidth="lg">
+              <Container id="tablecontenair" maxWidth="lg">
                 <br />
                 <TableContainer component={Paper}>
                   <Table aria-label="simple table">
