@@ -94,10 +94,10 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     //// SentMailToOther
     const msg = {
       to: otherMailTo,
-      from: "akijaypraytay@outlook.com",
+      from: "akijaypraytay-tracking@outlook.com",
       subject: `Akijaypraytay : new exchange`,
       text: `${userData.profile.username} sets an exchange with you for this object : ${request.body.name}`,
-      html: `${userData.profile.username} sets an exchange with you for this object : ${request.body.name} <button><a href=${SENDGRID_DOMAIN_URL}receiver/${userData._id}/${uuidNewValue}>Check it out now</a></button>`,
+      html: `${userData.profile.username} sets an exchange with you for this object : ${request.body.name} <p><button><a href=${SENDGRID_DOMAIN_URL}receiver/${userData._id}/${uuidNewValue}>Check it out now</a></button></p>`,
     };
     sendgrid
       .send(msg)
@@ -107,7 +107,9 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
       .catch((error) => {
         console.error(error);
       });
-
+    setTimeout(() => {
+      console.log("Proceed Timeout for borrower");
+    }, 1000);
     response.redirect(
       `/tracking/sender/${userData.exchange[userData.exchange.length - 1]._id}`
     );
