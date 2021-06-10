@@ -6,6 +6,7 @@ import { Users, Exchange } from "../../../../data/types/users";
 import { validate as uuidValidate } from "uuid";
 import { ExchangeProps } from "../../../../data/types/props";
 import Navbar from "../../../../components/Navbar";
+import Container from "@material-ui/core/Container";
 
 const ReceiverExchangeID: React.FC<ExchangeProps> = ({
   exchangeData,
@@ -38,27 +39,60 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
   return (
     <div>
       <Navbar isConnect={isToken} />
-      {isDataValid ? (
-        <>
-          <ul>
-            <h1>
-              <>
-                <h2>Detail of exchange n°{userData._id}</h2>
-                <h5>
-                  {isLoaner
-                    ? `(loaned to ${userData.borrower})`
-                    : `(borrow from ${userData.loaner})`}
-                </h5>
-              </>
-            </h1>
+      <br />
+      <h1 className="text-center">TRACKING RECEIVER</h1>
+      <br />
+      <br />
 
-            <h3>{`${userData.item.name}`}</h3>
-            {`${userData.item.description}`}
-            <div>Creation date : {`${userData.creation_date}`}</div>
-            <div>Return date : {`${userData.return_date}`}</div>
-            <br />
-            {/* WAITING STATUS */}
-            <h5>{currentStatus}</h5>
+      {isDataValid ? (
+        <Container maxWidth="sm">
+          <div className="card border-info mb-3" style={{ width: "18 em" }}>
+            <div className="card-body ">
+              <strong> Detail of exchange</strong> n°
+              {userData._id}
+            </div>
+            <div className="card-footer bg-transparent border-info">
+              <p className="card-text">
+                {isLoaner ? (
+                  <>
+                    <strong>Loaner from :</strong> {userData.borrower}
+                  </>
+                ) : (
+                  <>
+                    <strong>Borrow from :</strong> {userData.loaner}
+                  </>
+                )}
+              </p>
+            </div>
+            <div className="card-footer bg-transparent border-info">
+              <div>
+                <strong> Category : </strong>
+                {userData.item.category}
+              </div>
+              <div>
+                <strong> Objet : </strong>
+                {userData.item.name}
+              </div>
+              <strong> Description : </strong>
+              {userData.item.description}
+            </div>
+
+            <div className="card-footer bg-transparent border-info">
+              <div>
+                <strong>Creation date : </strong>
+                {`${userData.creation_date}`}
+              </div>{" "}
+              <div>
+                {" "}
+                <strong> Return date :</strong> {`${userData.return_date}`}
+              </div>
+            </div>
+            <div className="card-footer bg-transparent border-info">
+              <p>
+                {" "}
+                <strong>Status :</strong> {`${currentStatus}`}
+              </p>
+            </div>
             {currentStatus === "Waiting" ? (
               <form
                 className="container-fluid"
@@ -72,28 +106,31 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
                 />
                 <input type="hidden" name="from" value="borrower" />
                 <input type="hidden" name="userId" value={userID} />
-                <button
-                  className="btn btn-light text-dark border m-1"
-                  type="submit"
-                  name="status"
-                  value="Pending"
-                >
-                  Confirm
-                </button>
-                <button
-                  className="btn btn-dark text-light border m-1"
-                  type="submit"
-                  name="status"
-                  value="Abort"
-                >
-                  Refuse
-                </button>
+                <div className="d-grid gap-2 d-md-flex justify-content-md-center">
+                  <button
+                    className="btn btn-light text-dark border m-1"
+                    type="submit"
+                    name="status"
+                    value="Pending"
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    className="btn btn-dark text-light border m-1"
+                    type="submit"
+                    name="status"
+                    value="Abort"
+                  >
+                    Refuse
+                  </button>
+                </div>
+                <br />
               </form>
             ) : (
               ""
             )}
-          </ul>
-        </>
+          </div>
+        </Container>
       ) : (
         "Nothing to display"
       )}
