@@ -12,7 +12,6 @@ import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Link from "next/link";
-
 const History: React.FC<Props> = ({ userData }) => {
   const [orderDirection, setOrderDirection] = React.useState("");
   const [valueToOrderBy, setValueToOrderBy] = React.useState("");
@@ -25,13 +24,11 @@ const History: React.FC<Props> = ({ userData }) => {
     })
   );
   const [defaultStatus, setDefaultStatus] = React.useState(userData.exchange);
-
   const handleRequestSort = (event, property) => {
     const isAscending = valueToOrderBy === property && orderDirection === "asc";
     setValueToOrderBy(property);
     setOrderDirection(isAscending ? "desc" : "asc");
   };
-
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -41,13 +38,11 @@ const History: React.FC<Props> = ({ userData }) => {
     }
     return 0;
   }
-
   function getComparator(order, orderBy) {
     return order === "desc"
       ? (a, b) => descendingComparator(a, b, orderBy)
       : (a, b) => -descendingComparator(a, b, orderBy);
   }
-
   const sortedRowInformation = (rowArray, comparator) => {
     const stabilizedRowArray = rowArray.map((el, index) => [el, index]);
     stabilizedRowArray.sort((a, b) => {
@@ -57,7 +52,6 @@ const History: React.FC<Props> = ({ userData }) => {
     });
     return stabilizedRowArray.map((el) => el[0]);
   };
-
   React.useEffect(() => {
     const data: Exchange[] = userData.exchange.filter((element) => {
       if (element.status === selectStatus) {
@@ -69,12 +63,14 @@ const History: React.FC<Props> = ({ userData }) => {
     setSelectData(data);
   }, [selectStatus, defaultStatus]);
   // console.log(selectData);
-
   return (
     <>
       <Container maxWidth="lg">
         <Grid container>
-          <Grid item xs={2}>
+          <br />
+          <br />
+          <br />
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -86,8 +82,7 @@ const History: React.FC<Props> = ({ userData }) => {
               All
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -99,8 +94,7 @@ const History: React.FC<Props> = ({ userData }) => {
               Waiting
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -112,8 +106,7 @@ const History: React.FC<Props> = ({ userData }) => {
               Pending
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -125,8 +118,7 @@ const History: React.FC<Props> = ({ userData }) => {
               Returned
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -138,8 +130,7 @@ const History: React.FC<Props> = ({ userData }) => {
               Not returned
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -150,12 +141,11 @@ const History: React.FC<Props> = ({ userData }) => {
             >
               Abort
             </Button>
+            <br />
           </Grid>
-
           <br />
           <br />
         </Grid>
-
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHeader
@@ -169,10 +159,10 @@ const History: React.FC<Props> = ({ userData }) => {
                 getComparator(orderDirection, valueToOrderBy)
               ).map((data, index) => (
                 <TableRow key={index}>
-                  <TableCell align="left" scope="row">
+                  <TableCell align="center" scope="row">
                     {data._id}
                   </TableCell>
-                  <TableCell align="left">
+                  <TableCell align="center">
                     {" "}
                     <a
                       className="btn btn-outline-dark border m-1"
@@ -181,10 +171,10 @@ const History: React.FC<Props> = ({ userData }) => {
                       {data.item.name}
                     </a>
                   </TableCell>
-                  <TableCell align="left">{data.loaner}</TableCell>
-                  <TableCell align="left">{data.borrower}</TableCell>
-                  <TableCell align="left">{data.return_date}</TableCell>
-                  <TableCell align="left">{data.status}</TableCell>
+                  <TableCell align="center">{data.loaner}</TableCell>
+                  <TableCell align="center">{data.borrower}</TableCell>
+                  <TableCell align="center">{data.return_date}</TableCell>
+                  <TableCell align="center">{data.status}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -194,14 +184,10 @@ const History: React.FC<Props> = ({ userData }) => {
     </>
   );
 };
-
 export default History;
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userToken = context.req.cookies.token;
-
   const checkConnectionValidity = await checkingConnection(userToken);
   // console.log("DB", checkConnectionValidity);
-
   return checkConnectionValidity;
 };

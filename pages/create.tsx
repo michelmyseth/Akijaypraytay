@@ -5,8 +5,7 @@ import { Props } from "../data/types/props";
 import { checkingConnection } from "../util/checkingConnection";
 import { isValid, isAfter } from "date-fns";
 import { categories } from "../data/categories";
-import Paper from "@material-ui/core/Paper";
-
+import { Paper } from "@material-ui/core";
 const Create: React.FC<Props> = ({ userData }) => {
   const today: string = new Date().toISOString().split("T")[0];
   const [returnDate, setReturnDate] = React.useState<string>(undefined);
@@ -15,7 +14,6 @@ const Create: React.FC<Props> = ({ userData }) => {
   const [mailEntry, setMailEntry] = React.useState<string>(undefined);
   const [isMailValid, setIsMailValid] = React.useState<boolean>(undefined);
   const [selectCategory, setSelectCategory] = React.useState<string>();
-
   useEffect(() => {
     if (typeof returnDate !== "undefined") {
       if (isAfter(new Date(returnDate), new Date(today))) {
@@ -25,7 +23,6 @@ const Create: React.FC<Props> = ({ userData }) => {
       }
     }
   }, [returnDate]);
-
   useEffect(() => {
     if (typeof mailEntry !== "undefined") {
       if (mailEntry !== userData.profile.mail) {
@@ -35,12 +32,13 @@ const Create: React.FC<Props> = ({ userData }) => {
       }
     }
   }, [mailEntry]);
-
   return (
     <div>
       <div id="createform" className="container">
         <Paper id="paperClue" elevation={3}>
-          <h3 id="createFormTitle">Fill the form</h3>
+          <h3 id="createFormTitle" className="pt-3">
+            Fill the form
+          </h3>
           <form
             className="container-fluid mb-2"
             method="POST"
@@ -48,35 +46,35 @@ const Create: React.FC<Props> = ({ userData }) => {
           >
             <div>
               {/* <input
-            className="fst-italic rounded m-1 text-dark"
-            type="checkbox"
-            onChange={(): void => {
-              isLoaner ? setIsLoaner(false) : setIsLoaner(true);
-            }}
-          />
-          <label>Loaner</label> */}
+          className="fst-italic rounded m-1 text-dark"
+          type="checkbox"
+          onChange={(): void => {
+            isLoaner ? setIsLoaner(false) : setIsLoaner(true);
+          }}
+        />
+        <label>Loaner</label> */}
               <br />
+              <label className="fst-italic">Name of your object</label>
               <input
                 className="form-control"
                 type="text"
                 name="name"
-                placeholder="Name of your object"
                 required
               />
             </div>
             <br />
             <div>
+              <label className="fst-italic">Description</label>
               <input
                 className="form-control"
                 type="text"
                 name="description"
-                placeholder="Description"
                 required
               />
             </div>
             <br />
             <div>
-              <label>Select a category</label>
+              <label className="fst-italic">Please choose a category</label>
               <br />
               <select
                 name="category"
@@ -97,17 +95,20 @@ const Create: React.FC<Props> = ({ userData }) => {
             </div>
             <div>
               <br />
+              <label className="fst-italic">Borrower mail</label>
               <input
                 className="form-control"
                 type="email"
                 name={isLoaner ? "borrower" : "loaner"}
-                placeholder={isLoaner ? "Borrower mail" : "Loaner mail"}
+                // placeholder={isLoaner ? "Borrower mail" : "Loaner mail"}
+
                 onChange={(event): void => setMailEntry(event.target.value)}
                 required
               />
             </div>
             <div>
               <br />
+              <label className="fst-italic">Select a exchange date</label>
               <input
                 className="form-control"
                 type="date"
@@ -118,7 +119,7 @@ const Create: React.FC<Props> = ({ userData }) => {
                 required
               />
             </div>
-            <p>
+            <p className="pb-3">
               <input
                 type="hidden"
                 name="_id"
@@ -160,14 +161,10 @@ const Create: React.FC<Props> = ({ userData }) => {
     </div>
   );
 };
-
 export default Create;
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userToken = context.req.cookies.token;
-
   const checkConnectionValidity = await checkingConnection(userToken);
   // console.log("DB", checkConnectionValidity);
-
   return checkConnectionValidity;
 };
