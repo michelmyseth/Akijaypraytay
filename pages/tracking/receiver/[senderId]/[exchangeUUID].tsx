@@ -124,6 +124,7 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
                     Refuse
                   </button>
                 </div>
+                <br />
               </form>
             ) : (
               ""
