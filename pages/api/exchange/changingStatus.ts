@@ -68,7 +68,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     //// SentMailToBorrower
     const borrowerMsg = {
       to: `${borrowerAdressMail}`,
-      from: "akijaypraytay@outlook.com",
+      from: "akijaypraytay-tracking@outlook.com",
       subject: `Akijaypraytay : update of your exchange`,
       text: `Your borrowed object has just changed status`,
       html: `Your borrowed object (${exchangeItem}) has just changed status : <strong>${exchangePreviousStatus}</strong> to <strong>${exchangeNewStatus}</strong> <p><button><a href=${SENDGRID_DOMAIN_URL}receiver/${userId}/${exchangeUUID}>Check it out now</a></button></p>`,
@@ -81,13 +81,15 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
       .catch((error) => {
         console.error(error);
       });
-
+    setTimeout(() => {
+      console.log("Proceed Timeout for loaner");
+    }, 1000);
     response.redirect(`/tracking/sender/${exchangeIndex + 1}/`);
   } else {
     //// SentMailToLoaner
     const loanerMsg = {
       to: `${loanerAdressMail}`,
-      from: "akijaypraytay@outlook.com",
+      from: "akijaypraytay-tracking@outlook.com",
       subject: `Akijaypraytay : update of your exchange`,
       text: `Your borrowed object has just changed status`,
       html: `Your loaned object (${exchangeItem}) has just changed status : <strong>${exchangePreviousStatus}</strong> to <strong>${exchangeNewStatus}</strong> <p><button><a href=${SENDGRID_DOMAIN_URL}sender/${exchangeIndex}>Check it out now</a></button></p>`,
@@ -100,7 +102,9 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
       .catch((error) => {
         console.error(error);
       });
-
+    setTimeout(() => {
+      console.log("Proceed Timeout for borrower");
+    }, 1000);
     response.redirect(`/tracking/receiver/${userId}/${exchangeUUID}/`);
   }
 };
