@@ -7,7 +7,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
-
 export default function TableHeader(props) {
   const { valueToOrderBy, orderDirection, handleRequestSort } = props;
   const createSortHandler = (property) => (event) => {
@@ -16,7 +15,7 @@ export default function TableHeader(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell key="_id" align="left">
+        <TableCell key="_id" align="center">
           <TableSortLabel
             active={valueToOrderBy === "_id"}
             direction={valueToOrderBy === "_id" ? orderDirection : "asc"}
@@ -25,8 +24,7 @@ export default function TableHeader(props) {
             ID
           </TableSortLabel>
         </TableCell>
-
-        <TableCell key="name" align="left">
+        <TableCell key="name" align="center">
           <TableSortLabel
             active={valueToOrderBy === "name"}
             direction={valueToOrderBy === "name" ? orderDirection : "asc"}
@@ -35,7 +33,7 @@ export default function TableHeader(props) {
             Name items
           </TableSortLabel>
         </TableCell>
-        <TableCell key="loaner" align="left">
+        <TableCell key="loaner" align="center">
           <TableSortLabel
             active={valueToOrderBy === "loaner"}
             direction={valueToOrderBy === "loaner" ? orderDirection : "asc"}
@@ -44,7 +42,7 @@ export default function TableHeader(props) {
             Loaner
           </TableSortLabel>
         </TableCell>
-        <TableCell key="borrower" align="left">
+        <TableCell key="borrower" align="center">
           <TableSortLabel
             active={valueToOrderBy === "borrower"}
             direction={valueToOrderBy === "borrower" ? orderDirection : "asc"}
@@ -53,7 +51,7 @@ export default function TableHeader(props) {
             Borrower
           </TableSortLabel>
         </TableCell>
-        <TableCell key="return_date" align="left">
+        <TableCell key="return_date" align="center">
           <TableSortLabel
             active={valueToOrderBy === "return_date"}
             direction={
@@ -64,7 +62,7 @@ export default function TableHeader(props) {
             Return date
           </TableSortLabel>
         </TableCell>
-        <TableCell key="status" align="left">
+        <TableCell key="status" align="center">
           <TableSortLabel
             active={valueToOrderBy === "status"}
             direction={valueToOrderBy === "status" ? orderDirection : "asc"}
@@ -77,12 +75,9 @@ export default function TableHeader(props) {
     </TableHead>
   );
 }
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userToken = context.req.cookies.token;
-
   const checkConnectionValidity = await checkingConnection(userToken);
   // console.log("DB", checkConnectionValidity);
-
   return checkConnectionValidity;
 };

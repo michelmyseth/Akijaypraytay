@@ -20,8 +20,11 @@ const Footerx: React.FC = () => {
                 <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
                   <ul className="list-unstyled mb-0">
                     <li>
-                      <a href="#!" className="text-white">
-                        Git Hub
+                      <a
+                        href="https://github.com/logansel/Akijaypraytay/blob/main/README.md"
+                        className="text-white"
+                      >
+                        GitHub
                       </a>
                     </li>
                   </ul>

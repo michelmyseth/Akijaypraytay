@@ -5,12 +5,14 @@ import { getDatabase } from "../../../../util/mongodb";
 import { Users, Exchange } from "../../../../data/types/users";
 import { validate as uuidValidate } from "uuid";
 import { ExchangeProps } from "../../../../data/types/props";
+import Navbar from "../../../../components/Navbar";
 
 const ReceiverExchangeID: React.FC<ExchangeProps> = ({
   exchangeData,
   isReceiverIsLoaner,
   exchangeIndex,
   userId,
+  isToken,
 }) => {
   const [userData, setUserData] = React.useState<Exchange>(null);
   const [isLoaner, setIsLoaner] = React.useState<boolean>(null);
@@ -35,6 +37,7 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
 
   return (
     <div>
+      <Navbar isConnect={isToken} />
       {isDataValid ? (
         <>
           <ul>
@@ -101,6 +104,14 @@ const ReceiverExchangeID: React.FC<ExchangeProps> = ({
 export default ReceiverExchangeID;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const userToken = context.req.cookies.token;
+  let isToken = null;
+
+  if (userToken === undefined) {
+    isToken = false;
+  } else {
+    isToken = true;
+  }
   const senderIdParam = new ObjectId(context.params.senderId.toString());
   const findingReceiverExchange: Exchange[] = [];
   let exchangeIndex: number = null;
@@ -140,6 +151,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       isReceiverIsLoaner: isReceiverIsLoaner,
       exchangeIndex: exchangeIndex,
       userId: context.params.senderId,
+      isToken: isToken,
     },
   };
 };
