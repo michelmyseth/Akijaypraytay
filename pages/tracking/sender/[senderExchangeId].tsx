@@ -7,7 +7,6 @@ import { isValid, isAfter } from "date-fns";
 import Container from "@material-ui/core/Container";
 import Navbar from "../../../components/Navbar";
 
-
 const SenderExchangeId: React.FC<Props> = ({
   userData,
   exchangeId,
@@ -58,25 +57,47 @@ const SenderExchangeId: React.FC<Props> = ({
 
   return (
     <div>
-       <Navbar isConnect={isToken} />
-      <h1 className="text-center">TRACKING</h1>
+      <Navbar isConnect={isToken} />
+      <br />
+      <h1 className="text-center">TRACKING SENDER</h1>
       <br />
       <br />
+
       {isExchangeIdValid ? (
         <Container maxWidth="sm">
-          <div className="card border-success mb-3" style={{ width: "18 em" }}>
+          <div className="card border-info mb-3" style={{ width: "18 em" }}>
             <div className="card-body ">
-              <p>Detail of exchange n°{exchangeId}</p>
+              <strong> Detail of exchange</strong> n°
+              {exchangeId}
             </div>
-            <div className="card-footer bg-transparent border-success">
-              <p className="card-text">{` loaned : ${exchangeData.item.name}`}</p>
-              {`description : ${exchangeData.item.description}`}
+            <div className="card-footer bg-transparent border-info">
+              <p className="card-text">
+                <strong> Loaned : </strong> {exchangeData.item.name}
+              </p>
             </div>
-            <div className="card-footer bg-transparent border-success">
-              <div>Creation date : {`${exchangeData.creation_date}`}</div>{" "}
-              <div>Return date : {`${exchangeData.return_date}`}</div>
+            <div className="card-footer bg-transparent border-info">
+              <div>
+                <strong> Category : </strong> {exchangeData.item.category}
+              </div>
+              <div>
+                <strong> Objet : </strong> {exchangeData.item.name}
+              </div>
+              <strong> Description : </strong> {exchangeData.item.description}
             </div>
-            <div className="card-footer bg-transparent border-success">
+            <div className="card-footer bg-transparent border-info">
+              <div>
+                <strong>Creation date : </strong>
+                {`${exchangeData.creation_date}`}
+              </div>{" "}
+              <div>
+                {" "}
+                <strong>
+                  {" "}
+                  Return date :
+                </strong> {`${exchangeData.return_date}`}{" "}
+              </div>
+            </div>
+            <div className="card-footer bg-transparent border-info">
               <p>
                 {" "}
                 <strong>Status :</strong> {`${currentStatus}`}
@@ -95,39 +116,46 @@ const SenderExchangeId: React.FC<Props> = ({
                 />
                 <input type="hidden" name="from" value="loaner" />
                 <input type="hidden" name="userId" value={userData._id} />
-                <button
-                  className="btn btn-light text-dark border m-1"
-                  type="submit"
-                  name="status"
-                  value="Returned"
-                >
-                  Returned
-                </button>
-                {isDateValid ? (
+                <div className="d-grid gap-2 d-md-flex justify-content-md-center">
                   <button
-                    className="btn btn-dark text-light border m-1"
+                    className="btn btn-light text-dark border m-1"
                     type="submit"
                     name="status"
-                    value="Not returned"
+                    value="Returned"
                   >
-                    Not returned
+                    Returned
                   </button>
-                ) : (
-                  <button
-                    className="btn btn-dark text-light border m-1"
-                    type="submit"
-                    name="status"
-                    value="Not returned"
-                    disabled
-                  >
-                    Not returned
-                  </button>
-                )}
+                  {isDateValid ? (
+                    <button
+                      className="btn btn-dark text-light border m-1"
+                      type="submit"
+                      name="status"
+                      value="Not returned"
+                    >
+                      Not returned
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-dark text-light border m-1"
+                      type="submit"
+                      name="status"
+                      value="Not returned"
+                      disabled
+                    >
+                      Not returned
+                    </button>
+                  )}
+                </div>
+
+                <br />
               </form>
             ) : (
               ""
             )}
           </div>
+          <a id="Allbutton" className="btn" href="/dashboard">
+            Back to dashboard
+          </a>
         </Container>
       ) : (
         "Nothing to display"

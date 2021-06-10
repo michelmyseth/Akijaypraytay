@@ -37,8 +37,8 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
                         Username: {userData.profile.username}{" "}
                       </p>
                       <p className="text-muted font-size-sm">
-                        {displayPhone === 0
-                          ? null
+                        {displayPhone === null
+                          ? ""
                           : `Phone:  ${userData.profile.phone}`}
                       </p>
                       <p className="text-muted font-size-sm">
