@@ -11,6 +11,8 @@ import TableRow from "@material-ui/core/TableRow";
 import TableHead from "@material-ui/core/TableHead";
 import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
+import Navbar from "../components/Navbar";
+import Footerx from "../components/Footerx";
 
 const Dashboard: React.FC<Props> = ({ userData }) => {
   const [isLoanerExchangesPresence, setIsLoanerExchangesPresence] =
@@ -70,9 +72,13 @@ const Dashboard: React.FC<Props> = ({ userData }) => {
   return (
     <div>
       <Container maxWidth="lg">
-        <h1 className="text-center">Welcome {userData.profile.username}</h1>
+        <h1 id="titleDashboard" className="text-center">
+          Welcome {userData.profile.username}
+        </h1>
         <br />
-        <h2 className="text-center">Loaned</h2>
+        <h2 id="subtitleDashboard" className="text-center">
+          Your lastest objects loaned
+        </h2>
         {isLoanerExchangesPresence ? (
           <TableContainer id="tabsposition" component={Paper}>
             <Table aria-label="simple table">

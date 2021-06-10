@@ -5,6 +5,7 @@ import { Props } from "../data/types/props";
 import { checkingConnection } from "../util/checkingConnection";
 import { isValid, isAfter } from "date-fns";
 import { categories } from "../data/categories";
+import Paper from "@material-ui/core/Paper";
 
 const Create: React.FC<Props> = ({ userData }) => {
   const today: string = new Date().toISOString().split("T")[0];
@@ -37,13 +38,16 @@ const Create: React.FC<Props> = ({ userData }) => {
 
   return (
     <div>
-      <form
-        className="container-fluid"
-        method="POST"
-        action={`/api/exchange/create/`}
-      >
-        <div>
-          {/* <input
+      <div id="createform" className="container">
+        <Paper id="paperClue" elevation={3}>
+          <h3 id="createFormTitle">Fill the form</h3>
+          <form
+            className="container-fluid mb-2"
+            method="POST"
+            action={`/api/exchange/create/`}
+          >
+            <div>
+              {/* <input
             className="fst-italic rounded m-1 text-dark"
             type="checkbox"
             onChange={(): void => {
@@ -51,96 +55,108 @@ const Create: React.FC<Props> = ({ userData }) => {
             }}
           />
           <label>Loaner</label> */}
-          <br />
-          <input
-            className="form-control"
-            type="text"
-            name="name"
-            placeholder="Name of your object"
-            required
-          />
-        </div>
-        <div>
-          <input
-            className="form-control"
-            type="text"
-            name="description"
-            placeholder="Description"
-            required
-          />
-        </div>
-        <div>
-          <label>Select a category</label>
-          <br />
-          <select
-            name="category"
-            onChange={(event): void => setSelectCategory(event.target.value)}
-          >
-            {categories.map((category, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <option value={category.string} className="form-control">
-                    {category.string} {category.emoji}
-                  </option>
-                </React.Fragment>
-              );
-            })}
-          </select>
-        </div>
-        <div>
-          <input
-            className="form-control"
-            type="email"
-            name={isLoaner ? "borrower" : "loaner"}
-            placeholder={isLoaner ? "Borrower mail" : "Loaner mail"}
-            onChange={(event): void => setMailEntry(event.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            className="form-control"
-            type="date"
-            min={today}
-            max="2099-01-01"
-            name="returnDate"
-            onChange={(event): void => setReturnDate(event.target.value)}
-            required
-          />
-        </div>
-        <p>
-          <input
-            type="hidden"
-            name="_id"
-            value={`${userData.exchange.length + 1}`}
-          />
-          <input
-            type="hidden"
-            name={isLoaner ? "loaner" : "borrower"}
-            value={`${userData.profile.mail}`}
-          />
-          <input
-            type="hidden"
-            name="valideDate"
-            value={isDateValid.toString()}
-          />
-          <input type="hidden" name={selectCategory} value={selectCategory} />
-          <br />
-          {isMailValid ? (
-            <button className="btn btn-outline-dark border m-1" type="submit">
-              Submit
-            </button>
-          ) : (
-            <button
-              className="btn btn-outline-dark border m-1 disabled"
-              type="submit"
-              disabled
-            >
-              Submit
-            </button>
-          )}
-        </p>
-      </form>
+              <br />
+              <input
+                className="form-control"
+                type="text"
+                name="name"
+                placeholder="Name of your object"
+                required
+              />
+            </div>
+            <br />
+            <div>
+              <input
+                className="form-control"
+                type="text"
+                name="description"
+                placeholder="Description"
+                required
+              />
+            </div>
+            <br />
+            <div>
+              <label>Select a category</label>
+              <br />
+              <select
+                name="category"
+                onChange={(event): void =>
+                  setSelectCategory(event.target.value)
+                }
+              >
+                {categories.map((category, index) => {
+                  return (
+                    <React.Fragment key={index}>
+                      <option value={category.string} className="form-control">
+                        {category.string} {category.emoji}
+                      </option>
+                    </React.Fragment>
+                  );
+                })}
+              </select>
+            </div>
+            <div>
+              <br />
+              <input
+                className="form-control"
+                type="email"
+                name={isLoaner ? "borrower" : "loaner"}
+                placeholder={isLoaner ? "Borrower mail" : "Loaner mail"}
+                onChange={(event): void => setMailEntry(event.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <br />
+              <input
+                className="form-control"
+                type="date"
+                min={today}
+                max="2099-01-01"
+                name="returnDate"
+                onChange={(event): void => setReturnDate(event.target.value)}
+                required
+              />
+            </div>
+            <p>
+              <input
+                type="hidden"
+                name="_id"
+                value={`${userData.exchange.length + 1}`}
+              />
+              <input
+                type="hidden"
+                name={isLoaner ? "loaner" : "borrower"}
+                value={`${userData.profile.mail}`}
+              />
+              <input
+                type="hidden"
+                name="valideDate"
+                value={isDateValid.toString()}
+              />
+              <input
+                type="hidden"
+                name={selectCategory}
+                value={selectCategory}
+              />
+              <br />
+              {isMailValid ? (
+                <button id="Allbutton" className="btn border" type="submit">
+                  Submit
+                </button>
+              ) : (
+                <button
+                  className="btn btn-outline-dark border m-1 disabled"
+                  type="submit"
+                  disabled
+                >
+                  Submit
+                </button>
+              )}
+            </p>
+          </form>
+        </Paper>
+      </div>
     </div>
   );
 };
