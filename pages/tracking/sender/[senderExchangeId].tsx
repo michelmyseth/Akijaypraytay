@@ -4,7 +4,9 @@ import { Props } from "../../../data/types/props";
 import { Exchange } from "../../../data/types/users";
 import { checkingConnection } from "../../../util/checkingConnection";
 import { isValid, isAfter } from "date-fns";
+import Container from "@material-ui/core/Container";
 import Navbar from "../../../components/Navbar";
+
 
 const SenderExchangeId: React.FC<Props> = ({
   userData,
@@ -56,24 +58,30 @@ const SenderExchangeId: React.FC<Props> = ({
 
   return (
     <div>
-      <Navbar isConnect={isToken} />
+       <Navbar isConnect={isToken} />
+      <h1 className="text-center">TRACKING</h1>
+      <br />
+      <br />
       {isExchangeIdValid ? (
-        <>
-          <ul>
-            <h1>
-              <>
-                <h2>Detail of exchange n°{exchangeId}</h2>
-                <h5>{isLoaner ? "(loaned)" : "(borrow)"}</h5>
-              </>
-            </h1>
-            <br />
-            <h3>{`${exchangeData.item.name}`}</h3>
-            {`${exchangeData.item.description}`}
-            <div>Creation date : {`${exchangeData.creation_date}`}</div>
-            <div>Return date : {`${exchangeData.return_date}`}</div>
-            <br />
-            <h5>{currentStatus}</h5>
-            {/* PENDING STATUS */}
+        <Container maxWidth="sm">
+          <div className="card border-success mb-3" style={{ width: "18 em" }}>
+            <div className="card-body ">
+              <p>Detail of exchange n°{exchangeId}</p>
+            </div>
+            <div className="card-footer bg-transparent border-success">
+              <p className="card-text">{` loaned : ${exchangeData.item.name}`}</p>
+              {`description : ${exchangeData.item.description}`}
+            </div>
+            <div className="card-footer bg-transparent border-success">
+              <div>Creation date : {`${exchangeData.creation_date}`}</div>{" "}
+              <div>Return date : {`${exchangeData.return_date}`}</div>
+            </div>
+            <div className="card-footer bg-transparent border-success">
+              <p>
+                {" "}
+                <strong>Status :</strong> {`${currentStatus}`}
+              </p>
+            </div>
             {currentStatus === "Pending" ? (
               <form
                 className="container-fluid"
@@ -119,16 +127,10 @@ const SenderExchangeId: React.FC<Props> = ({
             ) : (
               ""
             )}
-          </ul>
-        </>
+          </div>
+        </Container>
       ) : (
-        <p className="text-center">
-          Nothing to display for now : the exchange you searching doesn't exist,
-          or it's time to make one !{" "}
-          <a className="btn btn-outline-dark border m-1" href="/create/">
-            Go !
-          </a>{" "}
-        </p>
+        "Nothing to display"
       )}
     </div>
   );

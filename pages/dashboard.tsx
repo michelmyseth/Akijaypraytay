@@ -72,9 +72,13 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
     <div>
       <Navbar isConnect={isToken} />
       <Container maxWidth="lg">
-        <h1 className="text-center">Welcome {userData.profile.username}</h1>
+        <h1 id="titleDashboard" className="text-center">
+          Welcome {userData.profile.username}
+        </h1>
         <br />
-        <h2 className="text-center">Loaned</h2>
+        <h2 id="subtitleDashboard" className="text-center">
+          Your lastest objects loaned
+        </h2>
         {isLoanerExchangesPresence ? (
           <TableContainer id="tabsposition" component={Paper}>
             <Table aria-label="simple table">

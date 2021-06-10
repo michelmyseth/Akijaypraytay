@@ -15,6 +15,7 @@ import Link from "next/link";
 import Navbar from "../../components/Navbar";
 
 const History: React.FC<Props> = ({ userData, isToken }) => {
+
   const [orderDirection, setOrderDirection] = React.useState("");
   const [valueToOrderBy, setValueToOrderBy] = React.useState("");
   const [selectStatus, setSelectStatus] = React.useState("All");
@@ -26,13 +27,11 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
     })
   );
   const [defaultStatus, setDefaultStatus] = React.useState(userData.exchange);
-
   const handleRequestSort = (event, property) => {
     const isAscending = valueToOrderBy === property && orderDirection === "asc";
     setValueToOrderBy(property);
     setOrderDirection(isAscending ? "desc" : "asc");
   };
-
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
       return -1;
@@ -42,13 +41,11 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
     }
     return 0;
   }
-
   function getComparator(order, orderBy) {
     return order === "desc"
       ? (a, b) => descendingComparator(a, b, orderBy)
       : (a, b) => -descendingComparator(a, b, orderBy);
   }
-
   const sortedRowInformation = (rowArray, comparator) => {
     const stabilizedRowArray = rowArray.map((el, index) => [el, index]);
     stabilizedRowArray.sort((a, b) => {
@@ -58,7 +55,6 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
     });
     return stabilizedRowArray.map((el) => el[0]);
   };
-
   React.useEffect(() => {
     const data: Exchange[] = userData.exchange.filter((element) => {
       if (element.status === selectStatus) {
@@ -70,13 +66,15 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
     setSelectData(data);
   }, [selectStatus, defaultStatus]);
   // console.log(selectData);
-
   return (
     <>
       <Navbar isConnect={isToken} />
       <Container maxWidth="lg">
         <Grid container>
-          <Grid item xs={2}>
+          <br />
+          <br />
+          <br />
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -88,8 +86,7 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
               All
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -101,8 +98,7 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
               Waiting
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -114,8 +110,7 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
               Pending
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -127,8 +122,7 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
               Returned
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -140,8 +134,7 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
               Not returned
             </Button>
           </Grid>
-
-          <Grid item xs={2}>
+          <Grid item xs={2} className="text-center">
             <Button
               id="Allbutton"
               onClick={() => {
@@ -152,12 +145,11 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
             >
               Abort
             </Button>
+            <br />
           </Grid>
-
           <br />
           <br />
         </Grid>
-
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHeader
@@ -171,10 +163,10 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
                 getComparator(orderDirection, valueToOrderBy)
               ).map((data, index) => (
                 <TableRow key={index}>
-                  <TableCell align="left" scope="row">
+                  <TableCell align="center" scope="row">
                     {data._id}
                   </TableCell>
-                  <TableCell align="left">
+                  <TableCell align="center">
                     {" "}
                     <a
                       className="btn btn-outline-dark border m-1"
@@ -183,10 +175,10 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
                       {data.item.name}
                     </a>
                   </TableCell>
-                  <TableCell align="left">{data.loaner}</TableCell>
-                  <TableCell align="left">{data.borrower}</TableCell>
-                  <TableCell align="left">{data.return_date}</TableCell>
-                  <TableCell align="left">{data.status}</TableCell>
+                  <TableCell align="center">{data.loaner}</TableCell>
+                  <TableCell align="center">{data.borrower}</TableCell>
+                  <TableCell align="center">{data.return_date}</TableCell>
+                  <TableCell align="center">{data.status}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -196,14 +188,10 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
     </>
   );
 };
-
 export default History;
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userToken = context.req.cookies.token;
-
   const checkConnectionValidity = await checkingConnection(userToken);
   // console.log("DB", checkConnectionValidity);
-
   return checkConnectionValidity;
 };
