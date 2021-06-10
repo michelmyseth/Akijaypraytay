@@ -68,7 +68,7 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
   return (
     <>
       <Navbar isConnect={isToken} />
-      <Container maxWidth="lg">
+      <Container id="containerHistory" maxWidth="lg">
         <Grid container>
           <br />
           <br />
@@ -150,6 +150,8 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
           <br />
           <br />
         </Grid>
+      </Container>
+      <Container>
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHeader
@@ -169,7 +171,8 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
                   <TableCell align="center">
                     {" "}
                     <a
-                      className="btn btn-outline-dark border m-1"
+                      id="Allbutton"
+                      className="btn btn-outline "
                       href={`/tracking/sender/${data._id}/`}
                     >
                       {data.item.name}

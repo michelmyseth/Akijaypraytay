@@ -99,6 +99,9 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
                   <TableCell key="Loaner" align="center">
                     Loaner
                   </TableCell>
+                  <TableCell key="Loaner" align="center">
+                    Status
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -125,6 +128,7 @@ const Dashboard: React.FC<Props> = ({ userData, isToken }) => {
                           {item.item.category}
                         </TableCell>
                         <TableCell align="center">{item.borrower}</TableCell>
+                        <TableCell align="center">{item.status}</TableCell>
                       </TableRow>
                     );
                   }

@@ -3,7 +3,7 @@ const Footerx: React.FC = () => {
     <>
       {/* <!-- Footer --> */}
       <div id="Footer">
-        <div className="text-center text-white ">
+        <div className="text-center text-dark ">
           {/* <!-- Grid container --> */}
           <div className="container justify-content-center">
             <div className="row p-4">
@@ -22,7 +22,7 @@ const Footerx: React.FC = () => {
                     <li>
                       <a
                         href="https://github.com/logansel/Akijaypraytay/blob/main/README.md"
-                        className="text-white"
+                        className="text-dark"
                       >
                         GitHub
                       </a>

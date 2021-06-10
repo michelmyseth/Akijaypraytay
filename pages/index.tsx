@@ -13,8 +13,8 @@ const Home: React.FC<{ isToken: boolean }> = ({ isToken }) => {
             <br />
             <br />
             <h4>
-              This is a tool to remember objects lent to his friends. You can
-              use it like a memo to keep in mind what you lent
+              It is a tool for remembering items loaned to your friends. You can
+              use it as a memo to keep in mind what you’ve loaned, for free !
             </h4>
             <br />
             <br />

@@ -17,7 +17,12 @@ const Layout: React.FC = ({ children }) => {
             integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
             crossOrigin="anonymous"
           ></link>
-          <link rel="icon" href="" />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="/favicon-96x96.png"
+          ></link>
         </Head>
         <br />
         <br />

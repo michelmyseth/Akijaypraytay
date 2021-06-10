@@ -11,11 +11,9 @@ import TableHead from "@material-ui/core/TableHead";
 import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
 import Navbar from "../../components/Navbar";
-
 const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
   const [isExchangesPresence, setIsExchangesPresence] =
     React.useState<boolean>(null);
-
   React.useEffect(() => {
     if (userData.exchange.length > 0) {
       setIsExchangesPresence(true);
@@ -92,7 +90,6 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
                       {userData.profile.adress}
                     </div>
                   </div>
-
                   {/* {userData.profile.contacts.length === 0 ? null : (
                       <div className="col-sm-9 text-secondary">
                         <select name="username">
@@ -114,7 +111,7 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
               </div>
             </div>
             {isExchangesPresence ? (
-              <Container maxWidth="lg">
+              <Container id="tablecontenair" maxWidth="lg">
                 <br />
                 <TableContainer component={Paper}>
                   <Table aria-label="simple table">
@@ -161,14 +158,10 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
     </>
   );
 };
-
 export default Profile;
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const userToken = context.req.cookies.token;
-
   const checkConnectionValidity = await checkingConnection(userToken);
   // console.log("DB", checkConnectionValidity);
-
   return checkConnectionValidity;
 };
