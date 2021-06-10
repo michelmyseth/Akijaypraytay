@@ -5,6 +5,7 @@ export type Props = {
   userData: Users;
   exchangeId: number;
   senderId: number;
+  isToken: boolean;
 };
 
 export type ExchangeProps = {
@@ -12,4 +13,5 @@ export type ExchangeProps = {
   isReceiverIsLoaner: boolean;
   exchangeIndex: number;
   userId: ObjectId;
+  isToken: boolean;
 };

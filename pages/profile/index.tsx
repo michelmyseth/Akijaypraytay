@@ -10,8 +10,9 @@ import TableRow from "@material-ui/core/TableRow";
 import TableHead from "@material-ui/core/TableHead";
 import TableCell from "@material-ui/core/TableCell";
 import Paper from "@material-ui/core/Paper";
+import Navbar from "../../components/Navbar";
 
-const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
+const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
   const [isExchangesPresence, setIsExchangesPresence] =
     React.useState<boolean>(null);
 
@@ -24,6 +25,7 @@ const Profile: React.FC<Props> = ({ userData }): JSX.Element => {
   }, []);
   return (
     <>
+      <Navbar isConnect={isToken} />
       <div className="container">
         <div className="main-body">
           <div className="row gutters-sm">
