@@ -14,6 +14,11 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
   return (
     <>
       <Navbar isConnect={isToken} />
+      <br />
+      <br />
+      <br />
+      <br />
+
       <div className="container">
         <div className="main-body">
           <div className="row gutters-sm">

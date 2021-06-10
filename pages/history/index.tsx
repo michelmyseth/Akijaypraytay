@@ -15,7 +15,6 @@ import Link from "next/link";
 import Navbar from "../../components/Navbar";
 
 const History: React.FC<Props> = ({ userData, isToken }) => {
-
   const [orderDirection, setOrderDirection] = React.useState("");
   const [valueToOrderBy, setValueToOrderBy] = React.useState("");
   const [selectStatus, setSelectStatus] = React.useState("All");
@@ -73,6 +72,7 @@ const History: React.FC<Props> = ({ userData, isToken }) => {
         <Grid container>
           <br />
           <br />
+
           <br />
           <Grid item xs={2} className="text-center">
             <Button
