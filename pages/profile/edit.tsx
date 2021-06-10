@@ -53,7 +53,7 @@ const Profile: React.FC<Props> = ({ userData, isToken }): JSX.Element => {
             </div>
             <div className="col-md-8">
               <div className="card mb-3">
-                <div className="card-body">
+                <div className="card-body m-4">
                   <div className="row">
                     <div className="col-sm-3"></div>
                     <div className="col-sm-9 text-secondary">

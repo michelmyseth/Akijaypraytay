@@ -104,3 +104,8 @@ h6 {
 .h-100 {
   background-color: #f5f5f5;
 }
+
+#tablecontenair {
+  padding-left: 11px;
+  padding-right: 11px;
+}
