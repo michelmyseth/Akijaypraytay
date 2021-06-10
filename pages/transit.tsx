@@ -1,18 +1,34 @@
+import React from "react";
 import Link from "next/link";
 import { GetServerSideProps } from "next";
 import Navbar from "../components/Navbar";
 
 const Continue: React.FC<{ isToken: boolean }> = ({ isToken }) => {
+  React.useEffect(() => {
+    window.location.href = "/dashboard/";
+  }, []);
   return (
     <>
       <Navbar isConnect={!isToken} />
-      <h1>Welcome back</h1>
-      <button className="btn btn-outline-dark border m-1">
-        <Link href={`/dashboard/`}>Continue</Link>
-      </button>
-      <button className="btn btn-outline-dark border m-1">
-        <Link href={`/profile/edit/`}>Edit Profile</Link>
-      </button>
+      <div className="container-xl">
+        <div className="row d-flex align-items">
+          <div className="col-6">
+            <img src="/img/25.png" width="800" height="600" />
+          </div>
+          <div className="col-6">
+            <br />
+            <br />
+            <h2>Redirection</h2>
+            <p>
+              If you are not redirect within 3 seconds, please click on the
+              "Continue" button below
+            </p>
+            <button className="btn btn-outline-dark border m-1">
+              <Link href={`/dashboard/`}>Continue</Link>
+            </button>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
