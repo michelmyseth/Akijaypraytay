@@ -8,12 +8,7 @@ const Navbar: React.FC<{ isConnect: boolean }> = ({ isConnect }) => {
       id="navbarColor"
       className="navbar p-2 navbar-expand-lg navbar navbar-light fixed-top "
     >
-      <img
-        src="https://image.shutterstock.com/z/stock-vector-business-people-replacement-line-icon-linear-style-sign-for-mobile-concept-and-web-design-1649442850.jpg"
-        alt=""
-        width={30}
-        height={40}
-      />
+      <img src="/img/log.jpeg" alt="" width={60} height={60} />
       <a className="navbar-brand" href="/">
         <h3>Akijaypraytay</h3>
       </a>

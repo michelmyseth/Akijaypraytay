@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 
 const Continue: React.FC<{ isToken: boolean }> = ({ isToken }) => {
   React.useEffect(() => {
-    window.location.href = "/dashboard/";
+    window.location.href = "/profile/";
   }, []);
   return (
     <>

@@ -145,7 +145,7 @@ const Create: React.FC<Props> = ({ userData, isToken }) => {
               />
               <br />
               {isMailValid ? (
-                <button id="Allbutton" className="btn border" type="submit">
+                <button className="btn btn-success border" type="submit">
                   Submit
                 </button>
               ) : (
